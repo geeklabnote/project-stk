@@ -1,0 +1,5 @@
+<factorypath>
+    <factorypathentry kind="WKSPJAR" id="/sharepict/lib/slim3-gen-RC1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="WKSPJAR" id="/sharepict/lib/t2-0.6.3-ga.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="WKSPJAR" id="/sharepict/lib/t2-guice-module-generator-2-SNAPSHOT.jar" enabled="true" runInBatchMode="false"/>
+</factorypath>
