@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<!-- t2 -->
+	<context-param>
+		<param-name>t2.encoding</param-name>
+		<param-value>UTF-8</param-value>
+	</context-param>
+	<context-param>
+		<param-name>slim3.rootPackage</param-name>
+		<param-value>stk.web.gae</param-value>
+	</context-param>
+
+	<!-- guice -->
+	<filter>
+		<filter-name>Guice Servlet Filter</filter-name>
+		<filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+	</filter>
+	<!-- t2 -->
+	<filter>
+		<filter-name>t2</filter-name>
+		<filter-class>org.t2framework.t2.filter.T2Filter</filter-class>
+		<init-param>
+			<param-name>t2.rootpackage</param-name>
+			<param-value>stk.web.gae.page</param-value>
+		</init-param>
+		<init-param>
+			<param-name>t2.container.adapter</param-name>
+			<param-value>stk.t2.gae.commons.adapter.StkGuiceAdapter</param-value>
+		</init-param>
+		<init-param>
+			<param-name>t2.exclude-resources</param-name>
+			<param-value>css, js, gif, png, jpg</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>uploadFilter</filter-name>
+		<filter-class>org.t2framework.t2.filter.MultiPartRequestFilter</filter-class>
+		<init-param>
+			<param-name>uploadMaxSize</param-name>
+			<param-value>100m</param-value>
+		</init-param>
+		<init-param>
+			<param-name>uploadMaxFileSize</param-name>
+			<param-value>100m</param-value>
+		</init-param>
+		<init-param>
+			<param-name>uploadThresholdSize</param-name>
+			<param-value>100k</param-value>
+		</init-param>
+		<init-param>
+			<param-name>t2.mutipart.handler</param-name>
+			<param-value>org.t2framework.t2.spi.impl.StreamMultipartRequestHandlerImpl</param-value>
+		</init-param>
+	</filter>
+
+	<filter>
+		<filter-name>mobyletFilter</filter-name>
+		<filter-class>org.mobylet.core.http.MobyletFilter</filter-class>
+		<init-param>
+			<param-name>mobylet.config.dir</param-name>
+			<param-value>WEB-INF/resources/</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>datastoreFilter</filter-name>
+		<filter-class>org.slim3.datastore.DatastoreFilter</filter-class>
+	</filter>
+
+
+	<filter-mapping>
+		<filter-name>Guice Servlet Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>mobyletFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>datastoreFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>uploadFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>t2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>GlobalTransactionServlet</servlet-name>
+		<servlet-class>org.slim3.datastore.GlobalTransactionServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>GlobalTransactionServlet</servlet-name>
+		<url-pattern>/slim3/gtx</url-pattern>
+	</servlet-mapping>
+
+	<!-- makesynccall -->
+	<servlet>
+		<servlet-name>makesynccall</servlet-name>
+		<servlet-class>appengine.servlet.MakeSyncCallServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>makesynccall</servlet-name>
+		<url-pattern>/sys/makesynccall</url-pattern>
+	</servlet-mapping>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>system</web-resource-name>
+			<url-pattern>/sys/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>system</web-resource-name>
+			<url-pattern>*.jsp</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>system</web-resource-name>
+			<url-pattern>/slim3/gtx/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+</web-app>
