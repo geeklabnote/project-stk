@@ -54,13 +54,7 @@
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/jp/sourceforge/gaejtools/gaejtools-util/1.3.0-SNAPSHOT/gaejtools-util-1.3.0-SNAPSHOT.jar" sourcepath="M2_REPO/jp/sourceforge/gaejtools/gaejtools-util/1.3.0-SNAPSHOT/gaejtools-util-1.3.0-SNAPSHOT-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/geronimo/specs/geronimo-servlet_2.5_spec/1.2/geronimo-servlet_2.5_spec-1.2.jar" sourcepath="M2_REPO/org/apache/geronimo/specs/geronimo-servlet_2.5_spec/1.2/geronimo-servlet_2.5_spec-1.2-sources.jar">
-    <attributes>
-      <attribute value="jar:file:/D:/usr/local/m2/repository/org/apache/geronimo/specs/geronimo-servlet_2.5_spec/1.2/geronimo-servlet_2.5_spec-1.2-javadoc.jar!/" name="javadoc_location"/>
-    </attributes>
-  </classpathentry>
   <classpathentry kind="var" path="M2_REPO/com/google/inject/guice/2.0/guice-2.0.jar"/>
-  <classpathentry kind="var" path="M2_REPO/com/google/code/guice/guice-servlet/1.0/guice-servlet-1.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/google/inject/extensions/guice-servlet/2.0/guice-servlet-2.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/t2framework/web/guiceadapter/0.6.3-ga/guiceadapter-0.6.3-ga.jar" sourcepath="M2_REPO/org/t2framework/web/guiceadapter/0.6.3-ga/guiceadapter-0.6.3-ga-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar" sourcepath="M2_REPO/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1-sources.jar"/>
@@ -101,9 +95,8 @@
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.5.6/slf4j-api-1.5.6.jar" sourcepath="M2_REPO/org/slf4j/slf4j-api/1.5.6/slf4j-api-1.5.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/slim3/slim3/RC1/slim3-RC1.jar" sourcepath="M2_REPO/org/slim3/slim3/RC1/slim3-RC1-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/taglibs/standard/1.1.2/standard-1.1.2.jar" sourcepath="M2_REPO/taglibs/standard/1.1.2/standard-1.1.2-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/t2framework/web/t2/0.6.3-ga/t2-0.6.3-ga.jar" sourcepath="M2_REPO/org/t2framework/web/t2/0.6.3-ga/t2-0.6.3-ga-sources.jar"/>
-  <classpathentry kind="src" path="/t2-gae-commons"/>
+  <classpathentry kind="var" path="M2_REPO/stk/t2-gae-commons/1-SNAPSHOT/t2-gae-commons-1-SNAPSHOT.jar"/>
   <classpathentry kind="src" path="/t2-guice-module-generator"/>
   <classpathentry kind="var" path="M2_REPO/org/t2framework/slim3/t2-slim3-gen/0.1-SNAPSHOT/t2-slim3-gen-0.1-SNAPSHOT.jar"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>

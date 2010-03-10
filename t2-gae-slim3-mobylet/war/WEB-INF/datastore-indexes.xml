@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Indices written at Wed, 10 Mar 2010 17:34:51 UTC -->
+
+<datastore-indexes autoGenerate="false">
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="GFU" ancestor="false" source="auto">
+        <property name="imageRef" direction="asc"/>
+        <property name="slim3.classHierarchyList" direction="asc"/>
+        <property name="sort" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>

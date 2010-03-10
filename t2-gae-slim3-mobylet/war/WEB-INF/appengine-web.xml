@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
-  <application>sharepict</application>
-  <version>1.0-SNAPSHOT</version>
+	<application>stk-gae</application>
+	<version>develop</version>
 
-  <static-files>
-    <include path="**.*" />
-  </static-files>
+	<resource-files>
+		<include path="/**.xml" />
+		<include path="/**.jsp" />
+		<include path="/**.properties" />
+		<include path="/**.csv" />
+		<include path="/**.tld" />
+	</resource-files>
 
-  <sessions-enabled>true</sessions-enabled>
+	<static-files>
+		<include path="/**.png" />
+		<include path="/**.gif" />
+		<include path="/**.css" />
+		<include path="/**.js" />
+	</static-files>
 
-  <inbound-services>
-    <service>mail</service>
-  </inbound-services>
+	<sessions-enabled>true</sessions-enabled>
 
-  <system-properties>
-    <property name="java.util.logging.config.file" value="WEB-INF/classes/logging.properties"/>
-  </system-properties>
+	<inbound-services>
+		<service>mail</service>
+	</inbound-services>
+
+	<system-properties>
+		<property name="java.util.logging.config.file" value="WEB-INF/classes/logging.properties" />
+	</system-properties>
 </appengine-web-app>

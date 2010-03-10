@@ -20,7 +20,6 @@
 			<groupId>jp.stk.gae</groupId>
 			<artifactId>t2-guice-module-generator</artifactId>
 			<version>2-SNAPSHOT</version>
-			<scope>provided</scope>
 			<exclusions>
 				<exclusion>
 					<groupId>org.t2framework.web</groupId>
@@ -108,7 +107,6 @@
 			<artifactId>t2-slim3-gen</artifactId>
 			<version>0.1-SNAPSHOT</version>
 			<type>jar</type>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slim3</groupId>
@@ -137,22 +135,21 @@
 		<dependency>
 			<groupId>jp.sourceforge.gaejtools</groupId>
 			<artifactId>gaejtools-util</artifactId>
-			<!-- 			<version>${appengine.version}-SNAPSHOT</version> -->
 			<version>1.3.0-SNAPSHOT</version>
 		</dependency>
 		<!--servlet -->
-<dependency>
-    <groupId>org.apache.geronimo.specs</groupId>
-    <artifactId>geronimo-servlet_2.5_spec</artifactId>
-    <version>1.2</version>
-			<scope>provided</scope>
-</dependency>
 <!-- 		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-servlet_2.5_spec</artifactId>
+			<version>1.2</version>
+			<scope>provided</scope>
+		</dependency> -->
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 			<scope>provided</scope>
-		</dependency> -->
+		</dependency>
 		<!-- t2 -->
 		<dependency>
 			<groupId>org.t2framework.web</groupId>
