@@ -27,7 +27,7 @@ public class GFileUtil {
 	 * @return GFUのリスト
 	 */
 	public static <T extends GFU> List<T> make(Class<T> clazz ,byte[] data ){
-		byte[][] splitData = ByteUtil.split(data, 50000);
+		byte[][] splitData = ByteUtil.split(data, 500 * 1024);
 		List<T> tList = new ArrayList<T>();
 		int i = 0;
 		for (final byte[] bs : splitData) {
