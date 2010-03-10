@@ -2,7 +2,6 @@
   <name>sharepict</name>
   <comment/>
   <projects>
-    <project>t2-gae-commons</project>
     <project>t2-guice-module-generator</project>
   </projects>
   <buildSpec>

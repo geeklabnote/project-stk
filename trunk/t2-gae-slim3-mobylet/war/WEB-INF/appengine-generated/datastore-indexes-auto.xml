@@ -1,12 +1,5 @@
-<!-- Indices written at Tue, 9 Mar 2010 16:21:30 UTC -->
+<!-- Indices written at Wed, 10 Mar 2010 17:34:51 UTC -->
 
 <datastore-indexes>
-
-    <!-- Used 2 times in query history -->
-    <datastore-index kind="GFU" ancestor="false" source="auto">
-        <property name="imageRef" direction="asc"/>
-        <property name="slim3.classHierarchyList" direction="asc"/>
-        <property name="sort" direction="asc"/>
-    </datastore-index>
 
 </datastore-indexes>

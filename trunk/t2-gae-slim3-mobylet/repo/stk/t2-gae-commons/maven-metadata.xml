@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>stk</groupId>
+  <artifactId>t2-gae-commons</artifactId>
+  <version>1-SNAPSHOT</version>
+  <versioning>
+    <versions>
+      <version>1-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20100310155955</lastUpdated>
+  </versioning>
+</metadata>

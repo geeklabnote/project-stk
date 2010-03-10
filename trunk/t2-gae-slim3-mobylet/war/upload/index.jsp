@@ -11,7 +11,7 @@
 	<link type="text/css" href="${t:url('/css/')}" rel="stylesheet" />
 <body>
 	<div class="contener">
-		<div class="header"><c:if test="${! empty key}"><img width="100" src="${t:url('/img/view/')}${key}"/></c:if></div>
+		<div class="header"><c:if test="${!empty key}"><img width="100" src="${t:url('/img/view/')}${key}"/></c:if></div>
 		<div class="contents">
 <ul>
 <c:forEach var="e" items="${f:errors()}">
