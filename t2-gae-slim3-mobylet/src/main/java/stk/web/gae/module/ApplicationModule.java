@@ -36,7 +36,7 @@ public class ApplicationModule extends AbstractModule {
 
 		bind(Plugin.class).annotatedWith(Names.named("authPlugin")).to(AuthPlugin.class).in(Scopes.SINGLETON);
 
-		bind(Plugin.class).annotatedWith(Names.named("slim3Plugin")).to(Slim3Plugin.class).in(ServletScopes.REQUEST);
+		bind(Plugin.class).annotatedWith(Names.named("slim3Plugin")).to(Slim3Plugin.class).in(Scopes.SINGLETON);
 
 	}
 }
