@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>jp.stk.gae</groupId>
+  <artifactId>t2-guice-module-generator</artifactId>
+  <version>2-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20100311.145335</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <lastUpdated>20100311145336</lastUpdated>
+  </versioning>
+</metadata>
