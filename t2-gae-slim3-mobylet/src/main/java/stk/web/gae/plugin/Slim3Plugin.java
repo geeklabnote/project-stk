@@ -17,6 +17,12 @@ import org.t2framework.t2.plugin.AbstractPlugin;
  */
 public class Slim3Plugin extends AbstractPlugin {
 
+	/** previousRequest */
+	private HttpServletRequest previousRequest;
+
+	/** previousResponse */
+	private HttpServletResponse previousResponse;
+
 	/**
 	 * slim3のコントローラクラスの代わりにRequest、Response、Errorsの設定を行います。
 	 *
@@ -30,7 +36,11 @@ public class Slim3Plugin extends AbstractPlugin {
 	@Override
 	public void beginRequestProcessing(HttpServletRequest request, HttpServletResponse response) {
 
+		previousRequest = RequestLocator.get();
+
 		RequestLocator.set(request);
+
+		previousResponse = ResponseLocator.get();
 
 		ResponseLocator.set(response);
 
@@ -62,9 +72,9 @@ public class Slim3Plugin extends AbstractPlugin {
 
 		ApplicationMessage.clearBundle();
 
-		ResponseLocator.set(response);
+		ResponseLocator.set(previousResponse);
 
-		RequestLocator.set(request);
+		RequestLocator.set(previousRequest);
 
 		super.endRequestProcessing(request, response);
 	}
