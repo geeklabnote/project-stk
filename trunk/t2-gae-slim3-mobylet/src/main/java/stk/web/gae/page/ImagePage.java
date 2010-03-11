@@ -2,6 +2,7 @@ package stk.web.gae.page;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletResponse;
@@ -11,17 +12,20 @@ import org.mobylet.core.image.ImageCacheHelper;
 import org.mobylet.core.util.InputStreamUtils;
 import org.mobylet.core.util.SingletonUtils;
 import org.slim3.datastore.Datastore;
+import org.slim3.datastore.GlobalTransaction;
 import org.t2framework.commons.exception.IORuntimeException;
 import org.t2framework.t2.annotation.core.ActionPath;
 import org.t2framework.t2.annotation.core.Default;
 import org.t2framework.t2.annotation.core.Page;
 import org.t2framework.t2.annotation.core.Var;
 import org.t2framework.t2.contexts.WebContext;
+import org.t2framework.t2.navigation.Redirect;
 import org.t2framework.t2.spi.Navigation;
 
 import stk.t2.gae.commons.navigation.Img;
 import stk.web.gae.meta.ImageMeta;
 import stk.web.gae.model.Image;
+import stk.web.gae.model.ImgUnit;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -54,5 +58,24 @@ public class ImagePage {
 			logger.info("get image by datastore");
 		}
 		return Img.from(imageBytes);
+	}
+
+	@ActionPath("delete/{key}")
+	public Navigation delete(@Var("key") String key , final WebContext context){
+		Key imgKey = KeyFactory.stringToKey(key);
+		GlobalTransaction gtx = Datastore.beginGlobalTransaction();
+		try{
+			Image img = gtx.get(Image.class, imgKey);
+			List<ImgUnit> imgUnitList = img.getImgUnitListRef().getModelList();
+			for (ImgUnit imgUnit : imgUnitList) {
+				gtx.delete(imgUnit.getKey());
+			}
+			gtx.delete(img.getKey());
+			gtx.commit();
+		}catch(Exception e){
+			gtx.rollback();
+			throw new RuntimeException();
+		}
+		return Redirect.to("/top");
 	}
 }
