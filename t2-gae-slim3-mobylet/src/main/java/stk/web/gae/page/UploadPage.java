@@ -101,6 +101,6 @@ public class UploadPage {
 			tx.rollback();
 			v.getErrors().put("put", e.getMessage());
 		}
-		return Redirect.to("/upload");
+		return Redirect.to("/top");
 	}
 }
