@@ -32,7 +32,7 @@ import com.google.appengine.repackaged.com.google.common.base.StringUtil;
 import com.google.inject.servlet.RequestScoped;
 
 @Page("/admin/member")
-@Auth(onlyAdmin=true)
+@Auth(onlyAdmin=true , useGaeUser=true)
 public class MemberPage {
 
 	public static class MemberForm{

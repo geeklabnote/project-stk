@@ -15,6 +15,9 @@ import stk.t2.gae.commons.exception.AuthException;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.repackaged.com.google.common.base.StringUtil;
 import com.google.inject.Inject;
+import com.google.inject.Injector;
+import com.google.inject.Key;
+import com.google.inject.name.Names;
 
 public class AuthPlugin extends AbstractPlugin {
 
@@ -24,28 +27,32 @@ public class AuthPlugin extends AbstractPlugin {
 	@Inject
 	UserService userService;
 
+	@Inject
+	Injector injector;
+
 	@Override
 	public Navigation beforeActionInvoke(ActionContext actionContext, MethodDesc targetMethod,
 			Object page, Object[] args) {
+
+		Auth auth = getAuthAnnotation(targetMethod);
+
+		if(auth == null){
+			return super.beforeActionInvoke(actionContext, targetMethod, page, args);
+		}
+
+		if(auth.useGaeUser()){
+			userService = injector.getInstance(Key.get(UserService.class, Names.named("gae")));
+		}
+
 		if (!userService.isUserLoggedIn()) {
 			addLoginLink2Request(actionContext);
 		} else {
 			addLogoutLink2Request(actionContext);
 		}
 
-		Method m = targetMethod.getMethod();
-		Class<?> c = m.getDeclaringClass();
-		Auth classAnn = c.getAnnotation(Auth.class);
-		Auth methodAnn = m.getAnnotation(Auth.class);
-		if (classAnn == null && methodAnn == null) {
-			return super.beforeActionInvoke(actionContext, targetMethod, page, args);
-		}
-
-		Auth auth = methodAnn != null ? methodAnn : classAnn;
 
 		if (!userService.isUserLoggedIn()) {
 			if (auth.onlyAdmin()) {
-				actionContext.getRequest().removeAttribute("loginUrl");
 				throw new AuthException("この画面は利用できません。");
 			}
 			throw new AuthException("ログインしていない方は、利用できません。");
@@ -56,6 +63,19 @@ public class AuthPlugin extends AbstractPlugin {
 		}
 
 		return super.beforeActionInvoke(actionContext, targetMethod, page, args);
+	}
+
+	private Auth getAuthAnnotation(MethodDesc targetMethod) {
+		Method m = targetMethod.getMethod();
+		Class<?> c = m.getDeclaringClass();
+		Auth classAnn = c.getAnnotation(Auth.class);
+		Auth methodAnn = m.getAnnotation(Auth.class);
+		if (classAnn == null && methodAnn == null) {
+			return null;
+		}
+
+		Auth auth = methodAnn != null ? methodAnn : classAnn;
+		return auth;
 	}
 
 	private void addLoginLink2Request(ActionContext actionContext) {
