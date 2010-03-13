@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FilenameUtils;
+import org.mobylet.core.util.RequestUtils;
 import org.slim3.controller.validator.Validators;
 import org.slim3.datastore.Datastore;
 import org.slim3.datastore.GlobalTransaction;
@@ -22,10 +23,12 @@ import org.t2framework.t2.navigation.Forward;
 import org.t2framework.t2.navigation.Redirect;
 import org.t2framework.t2.spi.Navigation;
 
+import stk.t2.gae.commons.annotation.Auth;
 import stk.web.gae.StkConst;
 import stk.web.gae.meta.ImageMeta;
 import stk.web.gae.model.Image;
 import stk.web.gae.model.ImgUnit;
+import stk.web.gae.model.Member;
 
 import com.google.appengine.api.datastore.KeyFactory;
 
@@ -34,6 +37,7 @@ import com.google.appengine.api.datastore.KeyFactory;
  * @author keisuke.oohashi
  */
 @Page("/upload")
+@Auth
 public class UploadPage {
 
 	/** JSP_PREFIX */
@@ -89,13 +93,14 @@ public class UploadPage {
 		GlobalTransaction tx =Datastore.beginGlobalTransaction();
 		try{
 			image.setKey(Datastore.allocateId(Image.class));
+			image.getUpdaterRef().setModel((Member)context.getSession().getAttribute(StkConst.SESSION_KEY_MEMBER));
 			image.setTitle(title);
 			image.setUpdaterComment(updaterComment);
 			image.setCreateDate(new Date());
-			List<ImgUnit> imgUnits = image.setImage(file.get());
 			image.setFileName(file.getName());
+			List<ImgUnit> imgUnits = image.setImage(file.get());
 			tx.put(imgUnits);
-			context.getRequest().setAttribute("key", KeyFactory.keyToString(tx.put(image)));
+			tx.put(image);
 			tx.commit();
 		}catch (Exception e){
 			tx.rollback();

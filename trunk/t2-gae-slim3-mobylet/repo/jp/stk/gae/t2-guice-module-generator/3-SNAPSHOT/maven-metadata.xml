@@ -2,12 +2,12 @@
 <metadata>
   <groupId>jp.stk.gae</groupId>
   <artifactId>t2-guice-module-generator</artifactId>
-  <version>2-SNAPSHOT</version>
+  <version>3-SNAPSHOT</version>
   <versioning>
-    <versions>
-      <version>2-SNAPSHOT</version>
-      <version>3-SNAPSHOT</version>
-    </versions>
+    <snapshot>
+      <timestamp>20100311.165817</timestamp>
+      <buildNumber>2</buildNumber>
+    </snapshot>
     <lastUpdated>20100311165817</lastUpdated>
   </versioning>
 </metadata>

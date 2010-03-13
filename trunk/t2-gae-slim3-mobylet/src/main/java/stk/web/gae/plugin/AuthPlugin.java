@@ -24,7 +24,6 @@ public class AuthPlugin extends AbstractPlugin {
 	@Inject
 	UserService userService;
 
-
 	@Override
 	public Navigation beforeActionInvoke(ActionContext actionContext, MethodDesc targetMethod,
 			Object page, Object[] args) {
@@ -71,7 +70,6 @@ public class AuthPlugin extends AbstractPlugin {
 			queryString = "";
 		} else {
 			queryString = "";
-//			queryString = ((HttpServletRequest)actionContext.getRequest()).getQueryString();
 		}
 
 		String redirectUrl = url;

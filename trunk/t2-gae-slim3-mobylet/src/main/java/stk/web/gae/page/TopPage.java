@@ -10,13 +10,14 @@ import org.t2framework.t2.contexts.WebContext;
 import org.t2framework.t2.navigation.Forward;
 import org.t2framework.t2.spi.Navigation;
 
+import stk.t2.gae.commons.annotation.Auth;
 import stk.web.gae.StkConst;
 import stk.web.gae.meta.ImageMeta;
 import stk.web.gae.model.Image;
 import stk.web.gae.model.Member;
 
 @Page("/top")
-@RequestScope
+@Auth(onlyAdmin=false)
 public class TopPage {
 
 	@Default

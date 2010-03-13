@@ -1,5 +1,7 @@
 package stk.web.gae.module;
 
+import stk.web.gae.service.UserServiceImpl;
+
 import com.google.appengine.api.urlfetch.URLFetchService;
 import com.google.appengine.api.urlfetch.URLFetchServiceFactory;
 import com.google.appengine.api.users.UserService;
@@ -7,7 +9,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provider;
 
-public class GaeServiceModule  extends AbstractModule{
+public class GaeServiceModule extends AbstractModule{
 
 	@Override
 	protected void configure() {
@@ -18,12 +20,7 @@ public class GaeServiceModule  extends AbstractModule{
 			}
 		});
 
-		bind(UserService.class).toProvider(new Provider<UserService>(){
-			@Override
-			public UserService get() {
-				return UserServiceFactory.getUserService();
-			}
-		});
+		bind(UserService.class).to(UserServiceImpl.class).asEagerSingleton();
 	}
 
 }

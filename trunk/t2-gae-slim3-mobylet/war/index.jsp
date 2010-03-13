@@ -13,6 +13,7 @@
 </head>
 <body>
 	<div class="container" align="center">
+		<c:if test="${!empty sessionScope.ERROR_MESSAGE}"><font color="red">${ERROR_MESSAGE}</font><c:set scope="session" property="ERROR_MESSAGE" var="ERROR_MESSAGE" value=""/></c:if>
 		<div class="contents">
 			<form action="${t:url('/auth/login/')}" method="post">
 			ID:<input align="left" type="text" name="userId"/><br/>

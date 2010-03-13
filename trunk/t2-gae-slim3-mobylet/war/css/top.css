@@ -1,0 +1,50 @@
+div#imgBox {
+	background-color: #7FBEFF;
+	width: 750px;
+	border: double 3px #0155AC;
+	padding: 0 5px;
+	margin-bottom: 2px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-box-shadow: 20px 20px 20px #224466;
+	-moz-box-shadow: 20px 20px 20px #224466;
+}
+
+div#imgBox .img {
+	width: 200px;
+	margin-top: 3px;
+	margin-right: 3px;
+	margin-bottom:3px;
+	float: left;
+}
+
+div#imgBox .right {
+	width: 520px;
+	float: left;
+}
+
+div#imgBox .title{
+	color: #FFFFFF; border-bottom : double 3px #0155AC;
+	margin: 0 -5px;
+	padding: 0 5px;
+	border-bottom: double 3px #0155AC;
+}
+div#imgBox h4 {
+	width:50%;
+	display: inline;
+}
+
+div#imgBox .tools{
+	text-align:right;
+	width:40%;
+	float: right;
+}
+
+div#imgBox .comment{
+	clear: both;
+	margin: 2px 0;
+	border-top: double 3px #0155AC;
+	margin: 0 -5px;
+	padding: 0 5px;
+
+}

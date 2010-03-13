@@ -1,9 +1,7 @@
 <projectDescription>
   <name>sharepict</name>
   <comment/>
-  <projects>
-    <project>t2-guice-module-generator</project>
-  </projects>
+  <projects/>
   <buildSpec>
     <buildCommand>
       <name>org.eclipse.jdt.core.javabuilder</name>

@@ -6,7 +6,6 @@ import org.t2framework.commons.annotation.composite.RequestScope;
 import org.t2framework.t2.annotation.core.Default;
 import org.t2framework.t2.annotation.core.Page;
 import org.t2framework.t2.contexts.WebContext;
-import org.t2framework.t2.navigation.Forward;
 import org.t2framework.t2.navigation.Redirect;
 import org.t2framework.t2.spi.Navigation;
 

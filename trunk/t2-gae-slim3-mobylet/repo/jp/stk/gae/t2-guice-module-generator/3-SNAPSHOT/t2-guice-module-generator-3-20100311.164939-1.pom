@@ -1,0 +1,151 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>jp.stk.gae</groupId>
+	<artifactId>t2-guice-module-generator</artifactId>
+	<packaging>jar</packaging>
+	<version>3-SNAPSHOT</version>
+	<name>t2-guice-module-generator</name>
+	<dependencies>
+		<dependency>
+			<groupId>org.seasar.aptina</groupId>
+			<artifactId>aptina-unit</artifactId>
+			<version>0.0.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seasar.aptina</groupId>
+			<artifactId>aptina-beans</artifactId>
+			<version>0.0.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.t2framework.web</groupId>
+			<artifactId>t2</artifactId>
+			<version>0.6.3-ga</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.adobe.blazeds</groupId>
+					<artifactId>blazeds-common</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.adobe.blazeds</groupId>
+					<artifactId>blazeds-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<outputDirectory>bin/classes</outputDirectory>
+		<testOutputDirectory>target/test-classes</testOutputDirectory>
+		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+		<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<encoding>UTF-8</encoding>
+						<source>1.6</source>
+						<target>1.6</target>
+						<compilerArgument>-proc:none</compilerArgument>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<repositories>
+		<repository>
+			<id>guice-maven</id>
+			<name>guice maven</name>
+			<url>http://guice-maven.googlecode.com/svn/trunk</url>
+		</repository>
+		<repository>
+			<id>mvnsearch</id>
+			<url>http://www.mvnsearch.org/maven2</url>
+		</repository>
+		<repository>
+			<id>maven.t2framework.org</id>
+			<name>The T2 Project Maven2 Repository</name>
+			<url>http://maven.t2framework.org/maven2</url>
+		</repository>
+		<repository>
+			<id>maven-snapshot.t2framework.org</id>
+			<url>http://maven.t2framework.org/maven2-snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>maven.seasar.org</id>
+			<name>The Seasar Foundation Maven2 Repository</name>
+			<url>http://maven.seasar.org/maven2</url>
+		</repository>
+		<repository>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Repository for Maven</name>
+			<url>http://download.java.net/maven/2/</url>
+		</repository>
+		<repository>
+			<id>repository.codehaus.org</id>
+			<name>Codehaus Maven2 Repository</name>
+			<url>http://repository.codehaus.org</url>
+		</repository>
+		<repository>
+			<id>localizable-doclet.googlecode.com</id>
+			<name>LocalizableDoclet Maven2 Repository</name>
+			<url>
+				http://localizable-doclet.googlecode.com/svn/maven2/
+			</url>
+		</repository>
+		<repository>
+			<id>maven.snapshot.seasar.org</id>
+			<name>The Seasar Foundation Maven2 Snapshot Repository</name>
+			<url>http://maven.seasar.org/maven2-snapshot</url>
+		</repository>
+		<repository>
+			<id>local</id>
+			<url>file:repo</url>
+			<name>local repo</name>
+		</repository>
+	</repositories>
+	<distributionManagement>
+		<repository>
+			<id>local</id>
+			<url>file:../sharepict/repo</url>
+			<name>local repo</name>
+		</repository>
+		<snapshotRepository>
+			<id>local</id>
+			<url>file:../sharepict/repo</url>
+			<name>local repo</name>
+		</snapshotRepository>
+	</distributionManagement>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>DataNucleus</id>
+			<url>http://www.datanucleus.org/downloads/maven2</url>
+		</pluginRepository>
+	</pluginRepositories>
+</project>
