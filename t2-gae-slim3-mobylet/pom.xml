@@ -12,14 +12,14 @@
 		<eclipse.generated.src>.apt_generated</eclipse.generated.src>
 		<t2.guice.module.outputPackage>stk.web.gae.module</t2.guice.module.outputPackage>
 		<appengine.libs>D:\usr\local\eclipse\eclipse\plugins\com.google.appengine.eclipse.sdkbundle.1.3.1_1.3.1.v201002101412\appengine-java-sdk-1.3.1\lib\agent\</appengine.libs>
-		<mobylet.version>1.0.3</mobylet.version>
+		<mobylet.version>1.0.4</mobylet.version>
 		<slim3.version>RC1</slim3.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>jp.stk.gae</groupId>
 			<artifactId>t2-guice-module-generator</artifactId>
-			<version>2-SNAPSHOT</version>
+			<version>3-SNAPSHOT</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.t2framework.web</groupId>
@@ -480,7 +480,7 @@ validationExclusions=src/misc/java/**/*
 <factorypath>
     <factorypathentry kind="WKSPJAR" id="/sharepict/lib/slim3-gen-${slim3.version}.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="WKSPJAR" id="/sharepict/lib/t2-${t2.version}.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="WKSPJAR" id="/sharepict/lib/t2-guice-module-generator-2-SNAPSHOT.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="WKSPJAR" id="/sharepict/lib/t2-guice-module-generator-3-SNAPSHOT.jar" enabled="true" runInBatchMode="false"/>
 </factorypath>
                  ]]>
 							</content>

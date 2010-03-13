@@ -2,7 +2,7 @@ package stk.web.gae;
 
 /**
  * 定数クラス.
- * @author soundTrick <keisuke.oohashi@gmail.com>
+ * @author soundTrick
  */
 public class StkConst {
 	/** サポートしている拡張子 */
@@ -23,4 +23,7 @@ public class StkConst {
 
 	/** MAX_IMAGE_BYTES */
 	public static final int MAX_IMAGE_BYTES = 1024 * 1000;
+
+	/** SESSION_KEY_MEMBER */
+	public static final String SESSION_KEY_MEMBER = "member";
 }

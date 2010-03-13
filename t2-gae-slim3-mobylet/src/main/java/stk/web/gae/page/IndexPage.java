@@ -17,6 +17,6 @@ public class IndexPage {
 
 	@Default
 	public Navigation index(final WebContext context) {
-		return Forward.to("/WEB-INF/pages/index.jsp");
+		return Forward.to("index.jsp");
 	}
 }

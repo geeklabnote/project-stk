@@ -304,4 +304,12 @@ public class Image implements Serializable {
 	public ModelRef<Member> getUpdaterRef() {
 		return updaterRef;
 	}
+
+	/**
+	 * 投稿者を取得します
+	 * @return 投稿者
+	 */
+	public Member getUpdater(){
+		return this.getUpdaterRef().getModel();
+	}
 }

@@ -14,100 +14,166 @@ import org.slim3.datastore.Model;
 @Model
 public class Member implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Attribute(primaryKey = true)
-    private Key key;
+	@Attribute(primaryKey = true)
+	private Key key;
 
-    @Attribute(version = true)
-    private Long version;
+	/** nickName */
+	private String nickName;
 
-    private Integer schemaVersion = 1;
+	/** passward */
+	private String password;
 
-    /**
-     * Returns the key.
-     *
-     * @return the key
-     */
-    public Key getKey() {
-        return key;
-    }
+	/** admin */
+	private boolean admin;
 
-    /**
-     * Sets the key.
-     *
-     * @param key
-     *            the key
-     */
-    public void setKey(Key key) {
-        this.key = key;
-    }
+	@Attribute(version = true)
+	private Long version;
 
-    /**
-     * Returns the version.
-     *
-     * @return the version
-     */
-    public Long getVersion() {
-        return version;
-    }
+	private Integer schemaVersion = 1;
 
-    /**
-     * Sets the version.
-     *
-     * @param version
-     *            the version
-     */
-    public void setVersion(Long version) {
-        this.version = version;
-    }
 
-    /**
-     * Returns the schema version.
-     *
-     * @return the schema version
-     */
-    public Integer getSchemaVersion() {
-        return schemaVersion;
-    }
+	/**
+	 * Returns the key.
+	 *
+	 * @return the key
+	 */
+	public Key getKey() {
+		return key;
+	}
 
-    /**
-     * Sets the schema version.
-     *
-     * @param schemaVersion
-     *            the schema version
-     */
-    public void setSchemaVersion(Integer schemaVersion) {
-        this.schemaVersion = schemaVersion;
-    }
+	/**
+	 * Sets the key.
+	 *
+	 * @param key
+	 *            the key
+	 */
+	public void setKey(Key key) {
+		this.key = key;
+	}
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((key == null) ? 0 : key.hashCode());
-        return result;
-    }
+	/**
+	 * Returns the version.
+	 *
+	 * @return the version
+	 */
+	public Long getVersion() {
+		return version;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        Member other = (Member) obj;
-        if (key == null) {
-            if (other.key != null) {
-                return false;
-            }
-        } else if (!key.equals(other.key)) {
-            return false;
-        }
-        return true;
-    }
+	/**
+	 * Sets the version.
+	 *
+	 * @param version
+	 *            the version
+	 */
+	public void setVersion(Long version) {
+		this.version = version;
+	}
+
+	/**
+	 * Returns the schema version.
+	 *
+	 * @return the schema version
+	 */
+	public Integer getSchemaVersion() {
+		return schemaVersion;
+	}
+
+	/**
+	 * Sets the schema version.
+	 *
+	 * @param schemaVersion
+	 *            the schema version
+	 */
+	public void setSchemaVersion(Integer schemaVersion) {
+		this.schemaVersion = schemaVersion;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((key == null) ? 0 : key.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Member other = (Member) obj;
+		if (key == null) {
+			if (other.key != null) {
+				return false;
+			}
+		} else if (!key.equals(other.key)) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * nickNameを設定します。
+	 * @param nickName セットするnickName
+	 */
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+	/**
+	 * nickNameを取得します。
+	 * @return nickName
+	 */
+	public String getNickName() {
+		return nickName;
+	}
+
+	/**
+	 * adminを設定します。
+	 * @param admin セットするadmin
+	 */
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+
+	/**
+	 * adminを取得します。
+	 * @return admin
+	 */
+	public boolean getAdmin() {
+		return admin;
+	}
+
+	@Override
+	public String toString() {
+		return "Member [admin=" + admin + ", key=" + key + ", nickName=" + nickName + ", password="
+				+ password + "]";
+	}
+
+	/**
+	 * passwordを設定します。
+	 * @param password セットするpassword
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	/**
+	 * passwordを取得します。
+	 * @return password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+
 }
