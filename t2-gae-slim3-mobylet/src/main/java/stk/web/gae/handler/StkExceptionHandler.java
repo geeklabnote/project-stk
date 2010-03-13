@@ -26,7 +26,7 @@ public class StkExceptionHandler implements ExceptionHandler<StkUserException, E
 				|| context.getRequest().isMultipartType()) {
 			context.getResponse().sendError(500);
 		}
-		return Redirect.to("/index");
+		return Redirect.to((String)context.getRequest().getAttribute("loginUrl"));
 	}
 
 	@Override
