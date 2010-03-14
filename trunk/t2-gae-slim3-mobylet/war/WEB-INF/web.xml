@@ -33,7 +33,7 @@
 		</init-param>
 		<init-param>
 			<param-name>t2.exclude-resources</param-name>
-			<param-value>css, js, gif, png, jpg</param-value>
+			<param-value>css, js, gif, png, jpg, ico,/slim3/gtx</param-value>
 		</init-param>
 	</filter>
 	<filter>

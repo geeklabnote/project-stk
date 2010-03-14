@@ -20,7 +20,7 @@
 </head>
 <body>
 <div class="conteiner">
-${member.nickName}
+<div align="right">${member.nickName}&nbsp;|&nbsp;<a href="${t:url(logoutUrl)}">ログアウト</a></div>
 <p><a href="${t:url('/upload')}">画像をUPLOADする。</a></p>
 <c:if test="${!stk:isEmpty(list)}">
 	<c:forEach items="${list}" var="img">
