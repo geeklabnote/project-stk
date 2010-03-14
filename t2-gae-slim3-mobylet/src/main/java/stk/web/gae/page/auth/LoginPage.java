@@ -9,10 +9,11 @@ import org.t2framework.t2.contexts.WebContext;
 import org.t2framework.t2.navigation.Redirect;
 import org.t2framework.t2.spi.Navigation;
 
+import stk.web.gae.StkConst;
 import stk.web.gae.meta.MemberMeta;
 import stk.web.gae.model.Member;
 
-@Page("/auth/")
+@Page("/auth/login")
 public class LoginPage {
 
 	@Default
@@ -29,7 +30,7 @@ public class LoginPage {
 			return Redirect.to("/index");
 		}
 
-		context.getSession().setAttribute("member", member);
+		context.getSession().setAttribute(StkConst.SESSION_KEY_MEMBER, member);
 		return Redirect.to("/top");
 	}
 

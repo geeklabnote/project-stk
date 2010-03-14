@@ -17,6 +17,7 @@ import org.slim3.datastore.Sort;
 import org.t2framework.commons.exception.IORuntimeException;
 import org.t2framework.commons.util.CloseableUtil;
 
+import stk.web.gae.meta.CommentMeta;
 import stk.web.gae.meta.ImgUnitMeta;
 import stk.web.gae.util.file.GFileUtil;
 
@@ -48,6 +49,12 @@ public class Image implements Serializable {
 	private InverseModelListRef<ImgUnit, Image> imgUnitListRef =
 			new InverseModelListRef<ImgUnit, Image>(ImgUnit.class, ImgUnitMeta.get().imageRef,
 					this, new Sort(ImgUnitMeta.get().sort));
+
+	/** commentListRef */
+	@Attribute(persistent=false)
+	private InverseModelListRef<Comment , Image> commentListRef =
+			new InverseModelListRef<Comment, Image>(Comment.class, CommentMeta.get().imageRef,
+					this, new Sort(CommentMeta.get().updateDate));
 
 	/** 投稿者へのリレーション */
 	private ModelRef<Member> updaterRef = new ModelRef<Member>(Member.class);
@@ -311,5 +318,13 @@ public class Image implements Serializable {
 	 */
 	public Member getUpdater(){
 		return this.getUpdaterRef().getModel();
+	}
+
+	/**
+	 * commentListRefを取得します。
+	 * @return commentListRef
+	 */
+	public InverseModelListRef<Comment , Image> getCommentListRef() {
+		return commentListRef;
 	}
 }
