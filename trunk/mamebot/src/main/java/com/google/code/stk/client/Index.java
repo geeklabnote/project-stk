@@ -13,7 +13,9 @@ public class Index implements EntryPoint {
 
 		AppController appController = new AppController(eventBus);
 
-		appController.go(RootPanel.get("container"));
+		appController.go(RootPanel.get("contents"));
+
+		RootPanel.get("msg").clear();
 
 	}
 

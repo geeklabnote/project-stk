@@ -1,0 +1,24 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.toolbar{
+			width:100%;
+			text-align: left;
+		}
+		.toolbar-left{
+			float: left;
+		}
+		.toolbar-right{
+			float: right;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<h1>ツイート一覧</h1>
+		<div class="{style.toolbar}">
+			<div class="{style.toolbar-left" ui:field="leftDiv"><g:Button ui:field="newButton" text="新規作成"/></div>
+			<div class="{style.toolbar-left" ui:field="rightDiv"><g:InlineLabel ui:field="sizeLabel">&nbsp;</g:InlineLabel></div>
+		</div>
+		<g:FlexTable ui:field="table"/>
+	</g:HTMLPanel>
+</ui:UiBinder>
