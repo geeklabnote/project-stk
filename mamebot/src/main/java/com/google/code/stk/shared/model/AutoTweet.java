@@ -23,6 +23,10 @@ public class AutoTweet implements Serializable {
 	@Attribute(unindexed = true)
 	private String tweet;
 
+	/** bure */
+	@Attribute(unindexed = true)
+	private Enums.Bure bure;
+
 	/** cycle */
 	@Attribute(unindexed = true)
 	private Enums.Cycle cycle;
@@ -33,9 +37,9 @@ public class AutoTweet implements Serializable {
 	/** endMMdd */
 	private String endMMdd;
 
-	/** tweetTime(hhmm) */
+	/** tweetTime(hh) */
 	@Attribute(unindexed = true)
-	private String tweetTime;
+	private String tweetHour;
 
 	/**
 	 * keyを取得します。
@@ -167,15 +171,23 @@ public class AutoTweet implements Serializable {
 	 * tweetTime(hhmm)を取得します。
 	 * @return tweetTime(hhmm)
 	 */
-	public String getTweetTime() {
-	    return tweetTime;
+	public String getTweetHour() {
+	    return tweetHour;
 	}
 
 	/**
 	 * tweetTime(hhmm)を設定します。
 	 * @param tweetTime tweetTime(hhmm)
 	 */
-	public void setTweetTime(String tweetTime) {
-	    this.tweetTime = tweetTime;
+	public void setTweetHour(String tweetTime) {
+	    this.tweetHour = tweetTime;
+	}
+
+	public void setBure(Enums.Bure bure) {
+		this.bure = bure;
+	}
+
+	public Enums.Bure getBure() {
+		return bure;
 	}
 }
