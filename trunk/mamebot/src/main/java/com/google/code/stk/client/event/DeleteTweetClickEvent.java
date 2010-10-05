@@ -1,6 +1,5 @@
 package com.google.code.stk.client.event;
 
-import com.google.appengine.api.datastore.Key;
 import com.google.gwt.event.shared.GwtEvent;
 
 public class DeleteTweetClickEvent extends GwtEvent<DeleteTweetClickHandler> {

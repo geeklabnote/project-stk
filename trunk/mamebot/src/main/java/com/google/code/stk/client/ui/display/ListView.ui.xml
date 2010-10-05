@@ -2,23 +2,37 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
-		.toolbar{
-			width:100%;
+		.toolbar {
+			width: 100%;
 			text-align: left;
-		}
-		.toolbar-left{
 			float: left;
+			clear: both;
+			background-color: gray;
 		}
-		.toolbar-right{
+
+		.toolbar-left {
+			float: left;
+			clear: both;
+		}
+
+		.toolbar-right {
 			float: right;
 		}
 	</ui:style>
 	<g:HTMLPanel>
 		<h1>ツイート一覧</h1>
 		<div class="{style.toolbar}">
-			<div class="{style.toolbar-left" ui:field="leftDiv"><g:Button ui:field="newButton" text="新規作成"/></div>
-			<div class="{style.toolbar-left" ui:field="rightDiv"><g:InlineLabel ui:field="sizeLabel">&nbsp;</g:InlineLabel></div>
+			<div class="{style.toolbar-left}" ui:field="leftDiv">
+				<g:Button ui:field="newButton" text="新規作成" />
+				<g:Anchor ui:field="pinCodeLink" href="/oauth/showPinCode">ピンコード設定</g:Anchor>
+				<g:FlowPanel visible="false" ui:field="pinCodeInputPanel"><g:TextBox ui:field="pinCode"/><g:Button ui:field="savePinCode" text="保存"/></g:FlowPanel>
+			</div>
+			<div class="{style.toolbar-right}" ui:field="rightDiv">
+				<g:InlineLabel ui:field="sizeLabel">&nbsp;</g:InlineLabel>
+			</div>
 		</div>
-		<g:FlexTable ui:field="table"/>
+		<div>
+			<g:FlexTable ui:field="table" />
+		</div>
 	</g:HTMLPanel>
 </ui:UiBinder>

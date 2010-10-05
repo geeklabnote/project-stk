@@ -10,10 +10,14 @@ public interface TwitterServiceAsync {
 
 	void findAll(AsyncCallback<List<AutoTweet>> callback);
 
-	void findBy(Key key, AsyncCallback<AutoTweet> callback);
+	void findBy(long key, AsyncCallback<AutoTweet> callback);
 
 	void delete(Key key, AsyncCallback<Void> callback);
 
 	void regist(AutoTweet autoTweet, AsyncCallback<Void> callback);
+
+	void registAccessToken(String pinCode, AsyncCallback<Void> callback);
+
+	void findAllAccessToeknOnlyKey(AsyncCallback<List<Key>> callback);
 
 }

@@ -41,6 +41,9 @@ public class AutoTweet implements Serializable {
 	@Attribute(unindexed = true)
 	private String tweetHour;
 
+	@Attribute(unindexed = true)
+	private String lastTweetAt;
+
 	/**
 	 * keyを取得します。
 	 * @return key
@@ -189,5 +192,13 @@ public class AutoTweet implements Serializable {
 
 	public Enums.Bure getBure() {
 		return bure;
+	}
+
+	public String getLastTweetAt() {
+		return lastTweetAt;
+	}
+
+	public void setLastTweetAt(String lastTweetAt) {
+		this.lastTweetAt = lastTweetAt;
 	}
 }
