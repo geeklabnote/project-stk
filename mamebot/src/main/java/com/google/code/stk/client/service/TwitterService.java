@@ -12,10 +12,14 @@ public interface TwitterService extends RemoteService {
 
 	List<AutoTweet> findAll();
 
-	AutoTweet findBy(Key key);
-
 	void delete(Key key);
 
 	void regist(AutoTweet autoTweet);
+
+	void registAccessToken(String pinCode);
+
+	AutoTweet findBy(long key);
+
+	List<Key> findAllAccessToeknOnlyKey();
 
 }

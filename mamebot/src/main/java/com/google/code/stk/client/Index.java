@@ -15,8 +15,7 @@ public class Index implements EntryPoint {
 
 		appController.go(RootPanel.get("contents"));
 
-		RootPanel.get("msg").clear();
-
+		RootPanel.get("msg").setVisible(false);
 	}
 
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:stk="urn:import:com.google.code.stk.client.ui.base">
+	<ui:style>
+
+	</ui:style>
+	<g:HTMLPanel>
+		<h1>AutoTweet設定</h1>
+		<div id="status"></div>
+		<table>
+			<tr>
+				<td>ツイート内容</td>
+				<td><g:TextBox ui:field="tweet" maxLength="140"/></td>
+			</tr>
+			<tr>
+				<td>開始～終了</td>
+				<td><g:TextBox ui:field="startMMdd" maxLength="4"/> ～ <g:TextBox ui:field="endMMdd" maxLength="4"/></td>
+			</tr>
+			<tr>
+				<td>時間</td>
+				<td><stk:ValueListBox  ui:field="tweetHour"/></td>
+			</tr>
+			<tr>
+				<td>周期</td>
+				<td><stk:ValueListBox  ui:field="cycle"/></td>
+			</tr>
+			<tr>
+				<td>ブレ</td>
+				<td><stk:ValueListBox  ui:field="bure"/></td>
+			</tr>
+		</table>
+		<g:Button text="登録" ui:field="registButton"/>
+	<g:TextBox ui:field="keyId" visible="false"/>
+	</g:HTMLPanel>
+</ui:UiBinder>

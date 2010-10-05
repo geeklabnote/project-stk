@@ -10,6 +10,8 @@ public abstract class AbstractPresenter<T extends Display> implements Presenter<
 
 	protected HandlerManager eventBus;
 
+	protected HasWidgets container;
+
 	public AbstractPresenter(T display , HandlerManager eventBus){
 		this.display = display;
 		this.eventBus = eventBus;
@@ -17,9 +19,8 @@ public abstract class AbstractPresenter<T extends Display> implements Presenter<
 
 	@Override
 	public void go(HasWidgets container) {
+		this.container = container;
 		initView();
-		container.clear();
-		container.add(display.asWidget());
 	}
 
 	protected abstract void initView();
