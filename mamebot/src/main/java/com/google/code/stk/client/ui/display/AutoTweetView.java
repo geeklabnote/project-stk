@@ -6,7 +6,6 @@ import com.google.appengine.api.datastore.Key;
 import com.google.code.stk.client.ui.base.ValueListBox;
 import com.google.code.stk.shared.Enums.Bure;
 import com.google.code.stk.shared.Enums.Cycle;
-import com.google.code.stk.shared.model.AutoTweet;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -49,8 +48,6 @@ public class AutoTweetView extends Composite implements AutoTweetDisplay{
 
 	private static AutoTweetViewUiBinder uiBinder = GWT
 			.create(AutoTweetViewUiBinder.class);
-
-	private AutoTweet data;
 
 	private Presenter presenter;
 
@@ -125,36 +122,6 @@ public class AutoTweetView extends Composite implements AutoTweetDisplay{
 	}
 
 	@Override
-	public AutoTweet getData() {
-		if(data == null){
-			data = new AutoTweet();
-		}
-
-		data.setBure(Bure.valueOf(bure.getValue()));
-		data.setCycle(Cycle.valueOf(cycle.getValue()));
-		data.setStartMMdd(startMMdd.getValue());
-		data.setEndMMdd(endMMdd.getValue());
-		data.setTweet(tweet.getValue());
-		data.setTweetHour(tweetHour.getValue());
-		data.setScreenName(screenName.getValue());
-
-		return data;
-	}
-
-	@Override
-	public void setData(AutoTweet data) {
-		this.data = data;
-		bure.setValue(data.getBure().name());
-		cycle.setValue(data.getCycle().name());
-		keyId.setValue(String.valueOf(data.getKey().getId()));
-		startMMdd.setValue(data.getStartMMdd());
-		endMMdd.setValue(data.getEndMMdd());
-		tweet.setValue(data.getTweet());
-		tweetHour.setValue(data.getTweetHour());
-		screenName.setValue(data.getScreenName());
-	}
-
-	@Override
 	public Widget asWidget() {
 		return this;
 	}
@@ -175,6 +142,11 @@ public class AutoTweetView extends Composite implements AutoTweetDisplay{
 		for (Key key : this.arg0) {
 			screenName.addItem(key.getName());
 		}
+	}
+
+	@Override
+	public HasValue<String> getScreenName() {
+		return screenName;
 	}
 
 }
