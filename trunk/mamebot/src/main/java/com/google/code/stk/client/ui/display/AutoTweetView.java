@@ -1,5 +1,8 @@
 package com.google.code.stk.client.ui.display;
 
+import java.util.List;
+
+import com.google.appengine.api.datastore.Key;
 import com.google.code.stk.client.ui.base.ValueListBox;
 import com.google.code.stk.shared.Enums.Bure;
 import com.google.code.stk.shared.Enums.Cycle;
@@ -41,12 +44,17 @@ public class AutoTweetView extends Composite implements AutoTweetDisplay{
 	@UiField
 	Button registButton;
 
+	@UiField
+	ValueListBox screenName;
+
 	private static AutoTweetViewUiBinder uiBinder = GWT
 			.create(AutoTweetViewUiBinder.class);
 
 	private AutoTweet data;
 
 	private Presenter presenter;
+
+	private List<Key> arg0;
 
 	interface AutoTweetViewUiBinder extends UiBinder<Widget, AutoTweetView> {
 	}
@@ -128,6 +136,7 @@ public class AutoTweetView extends Composite implements AutoTweetDisplay{
 		data.setEndMMdd(endMMdd.getValue());
 		data.setTweet(tweet.getValue());
 		data.setTweetHour(tweetHour.getValue());
+		data.setScreenName(screenName.getValue());
 
 		return data;
 	}
@@ -142,6 +151,7 @@ public class AutoTweetView extends Composite implements AutoTweetDisplay{
 		endMMdd.setValue(data.getEndMMdd());
 		tweet.setValue(data.getTweet());
 		tweetHour.setValue(data.getTweetHour());
+		screenName.setValue(data.getScreenName());
 	}
 
 	@Override
@@ -157,6 +167,14 @@ public class AutoTweetView extends Composite implements AutoTweetDisplay{
 	@Override
 	public void setPresenter(Presenter presenter) {
 		this.presenter = presenter;
+	}
+
+	@Override
+	public void setScreenNames(List<Key> arg0) {
+		this.arg0 = arg0;
+		for (Key key : this.arg0) {
+			screenName.addItem(key.getName());
+		}
 	}
 
 }

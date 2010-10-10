@@ -1,5 +1,8 @@
 package com.google.code.stk.client.ui.presenter;
 
+import java.util.List;
+
+import com.google.appengine.api.datastore.Key;
 import com.google.code.stk.client.event.NewTweetCreatedEvent;
 import com.google.code.stk.client.service.TwitterServiceAsync;
 import com.google.code.stk.client.ui.display.AutoTweetDisplay;
@@ -38,7 +41,19 @@ public class NewPresenter extends AbstractPresenter<AutoTweetDisplay> implements
 	@Override
 	protected void initView() {
 		container.clear();
-		container.add(display.asWidget());
+		service.findAllAccessToeknOnlyKey(new AsyncCallback<List<Key>>() {
+
+			@Override
+			public void onFailure(Throwable arg0) {
+
+			}
+
+			@Override
+			public void onSuccess(List<Key> arg0) {
+				display.setScreenNames(arg0);
+				container.add(display.asWidget());
+			}
+		});
 	}
 
 }

@@ -5,6 +5,7 @@ import org.slim3.util.ServletContextLocator;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
+import com.google.code.stk.server.model.TwAccessToken;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
@@ -17,6 +18,10 @@ public class TwitterUtil {
 		String secret = getSecret();
 
 		return new TwitterFactory().getOAuthAuthorizedInstance(consumerKey, secret);
+	}
+
+	public static Twitter getOAuthTwitter(TwAccessToken token){
+		return new TwitterFactory().getOAuthAuthorizedInstance(getConsumerKey(), getSecret(), token.getAccessToken());
 	}
 
 	private static String getSecret() {

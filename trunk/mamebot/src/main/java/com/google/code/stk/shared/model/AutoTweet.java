@@ -38,11 +38,13 @@ public class AutoTweet implements Serializable {
 	private String endMMdd;
 
 	/** tweetTime(hh) */
-	@Attribute(unindexed = true)
+	@Attribute
 	private String tweetHour;
 
 	@Attribute(unindexed = true)
 	private String lastTweetAt;
+
+	private String screenName;
 
 	/**
 	 * keyを取得します。
@@ -200,5 +202,13 @@ public class AutoTweet implements Serializable {
 
 	public void setLastTweetAt(String lastTweetAt) {
 		this.lastTweetAt = lastTweetAt;
+	}
+
+	public String getScreenName() {
+		return screenName;
+	}
+
+	public void setScreenName(String value) {
+		this.screenName = value;
 	}
 }

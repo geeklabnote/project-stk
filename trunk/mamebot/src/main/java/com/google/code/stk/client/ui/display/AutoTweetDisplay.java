@@ -1,5 +1,8 @@
 package com.google.code.stk.client.ui.display;
 
+import java.util.List;
+
+import com.google.appengine.api.datastore.Key;
 import com.google.code.stk.shared.model.AutoTweet;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HasValue;
@@ -26,4 +29,6 @@ public interface AutoTweetDisplay extends DataDisplay<AutoTweet> {
 	}
 
 	Button getRegistButton();
+
+	void setScreenNames(List<Key> arg0);
 }

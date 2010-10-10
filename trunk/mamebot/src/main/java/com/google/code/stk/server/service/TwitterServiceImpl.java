@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.slim3.datastore.Datastore;
+import org.slim3.util.ThrowableUtil;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -22,6 +23,8 @@ import com.google.code.stk.shared.model.AutoTweet;
 public class TwitterServiceImpl implements TwitterService {
 
 	Logger logger = Logger.getLogger(TwitterServiceImpl.class.getName());
+
+	private final static int RETRY = 5;
 
 	private static AutoTweetMeta atm = AutoTweetMeta.get();
 
@@ -58,11 +61,33 @@ public class TwitterServiceImpl implements TwitterService {
 		try {
 			AccessToken accessToken = nonAuthTwitter.getOAuthAccessToken(requestToken, pinCode);
 			TwAccessToken twToken = new TwAccessToken();
-			twToken.setKey(KeyFactory.createKey(TwAccessTokenMeta.get().getKind(), accessToken.getScreenName()));
+			twToken.setKey(Datastore.createKey(TwAccessTokenMeta.get(), accessToken.getScreenName()));
 			twToken.setAccessToken(accessToken);
 			Datastore.put(twToken);
 		} catch (TwitterException e) {
 			logger.log(Level.SEVERE , e.getMessage() , e);
+		}
+	}
+
+	public void tweet(String screenName, String tweet) {
+		Key key = Datastore.createKey(TwAccessTokenMeta.get(), screenName);
+		TwAccessToken token = Datastore.get(TwAccessTokenMeta.get(), key);
+		Twitter twitter = TwitterUtil.getOAuthTwitter(token);
+
+		int errorCount = 0;
+		while(true){
+			try {
+				twitter.updateStatus(tweet);
+				break;
+			} catch (TwitterException e) {
+				errorCount++;
+				logger.info("tweet miss " + e.getMessage() + " errorCount :" + errorCount);
+				if(errorCount < RETRY){
+					continue;
+				}else{
+					throw ThrowableUtil.wrap(e);
+				}
+			}
 		}
 	}
 

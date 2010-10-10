@@ -10,6 +10,10 @@
 		<div id="status"></div>
 		<table>
 			<tr>
+				<td>対象</td>
+				<td><stk:ValueListBox ui:field="screenName"/></td>
+			</tr>
+			<tr>
 				<td>ツイート内容</td>
 				<td><g:TextBox ui:field="tweet" maxLength="140"/></td>
 			</tr>
