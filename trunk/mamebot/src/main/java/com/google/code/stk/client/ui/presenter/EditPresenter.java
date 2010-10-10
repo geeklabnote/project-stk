@@ -7,6 +7,8 @@ import com.google.code.stk.client.event.NewTweetCreatedEvent;
 import com.google.code.stk.client.service.TwitterServiceAsync;
 import com.google.code.stk.client.ui.display.AutoTweetDisplay;
 import com.google.code.stk.client.ui.display.AutoTweetDisplay.Presenter;
+import com.google.code.stk.shared.Enums.Bure;
+import com.google.code.stk.shared.Enums.Cycle;
 import com.google.code.stk.shared.model.AutoTweet;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -15,6 +17,8 @@ public class EditPresenter extends AbstractPresenter<AutoTweetDisplay> implement
 
 	private final TwitterServiceAsync service;
 	private final long id;
+	private AutoTweet data;
+
 
 	public EditPresenter(AutoTweetDisplay display, HandlerManager eventBus , TwitterServiceAsync service , long id) {
 		super(display, eventBus);
@@ -26,7 +30,14 @@ public class EditPresenter extends AbstractPresenter<AutoTweetDisplay> implement
 	@Override
 	public void regist() {
 		display.getRegistButton().setEnabled(false);
-		service.regist(display.getData(), new AsyncCallback<Void>() {
+		data.setBure(Bure.valueOf(display.getBure().getValue()));
+		data.setCycle(Cycle.valueOf(display.getCycle().getValue()));
+		data.setStartMMdd(display.getStartMMdd().getValue());
+		data.setEndMMdd(display.getEndMMdd().getValue());
+		data.setTweet(display.getTweet().getValue());
+		data.setTweetHour(display.getTweetHour().getValue());
+		data.setScreenName(display.getScreenName().getValue());
+		service.regist(data, new AsyncCallback<Void>() {
 
 			@Override
 			public void onSuccess(Void arg0) {
@@ -58,9 +69,18 @@ public class EditPresenter extends AbstractPresenter<AutoTweetDisplay> implement
 		service.findBy(id, new AsyncCallback<AutoTweet>() {
 
 			@Override
-			public void onSuccess(AutoTweet arg0) {
+			public void onSuccess(AutoTweet result) {
+				data = result;
 				container.clear();
-				display.setData(arg0);
+				display.getBure().setValue(result.getBure().name());
+				display.getCycle().setValue(result.getCycle().name());
+				display.getKeyId().setValue(String.valueOf(result.getKey().getId()));
+				display.getStartMMdd().setValue(result.getStartMMdd());
+				display.getEndMMdd().setValue(result.getEndMMdd());
+				display.getTweet().setValue(result.getTweet());
+				display.getTweetHour().setValue(result.getTweetHour());
+				display.getScreenName().setValue(result.getScreenName());
+
 				container.add(display.asWidget());
 			}
 
