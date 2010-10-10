@@ -7,7 +7,7 @@
 			text-align: left;
 			float: left;
 			clear: both;
-			background-color: gray;
+			background-color: silver;
 		}
 
 		.toolbar-left {
@@ -23,8 +23,8 @@
 		<h1>ツイート一覧</h1>
 		<div class="{style.toolbar}">
 			<div class="{style.toolbar-left}" ui:field="leftDiv">
-				<g:Button ui:field="newButton" text="新規作成" />
-				<g:Anchor ui:field="pinCodeLink" href="/oauth/showPinCode">ピンコード設定</g:Anchor>
+				<g:Button ui:field="newButton" text="新規作成" /><br/>
+				<g:Anchor ui:field="pinCodeLink" href="/oauth/showPinCode" target="_blank">ピンコード設定</g:Anchor>
 				<g:FlowPanel visible="false" ui:field="pinCodeInputPanel"><g:TextBox ui:field="pinCode"/><g:Button ui:field="savePinCode" text="保存"/></g:FlowPanel>
 			</div>
 			<div class="{style.toolbar-right}" ui:field="rightDiv">

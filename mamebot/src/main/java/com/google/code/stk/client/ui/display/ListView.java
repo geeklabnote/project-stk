@@ -58,14 +58,15 @@ public class ListView extends Composite implements ListDisplay {
 		}
 
 		table.setText(0, 0, "ID");
-		table.setText(0, 1, "内容");
-		table.setText(0, 2, "時間");
-		table.setText(0, 3, "間隔");
-		table.setText(0, 4, "ブレ");
-		table.setText(0, 5, "期間");
-		table.setText(0, 6, "最終Tweet日");
-		table.setText(0, 7, "修正");
-		table.setText(0, 8, "削除");
+		table.setText(0, 1, "対象");
+		table.setText(0, 2, "内容");
+		table.setText(0, 3, "時間");
+		table.setText(0, 4, "間隔");
+		table.setText(0, 5, "ブレ");
+		table.setText(0, 6, "期間");
+		table.setText(0, 7, "最終Tweet日");
+		table.setText(0, 8, "修正");
+		table.setText(0, 9, "削除");
 
 		int row = 1;
 		for (final AutoTweet autoTweet : tweetList) {
@@ -75,12 +76,13 @@ public class ListView extends Composite implements ListDisplay {
 			table.setCellPadding(10);
 			table.setCellSpacing(10);
 			table.setText(row, 0, String.valueOf(autoTweet.getKey().getId()));
-			table.setText(row, 1, autoTweet.getTweet());
-			table.setText(row, 2, autoTweet.getTweetHour() + "時");
-			table.setText(row, 3, autoTweet.getCycle().name());
-			table.setText(row, 4, autoTweet.getBure().name());
-			table.setText(row, 5, autoTweet.getStartMMdd() + " ～ " + autoTweet.getEndMMdd());
-			table.setText(row, 6, autoTweet.getLastTweetAt());
+			table.setText(row, 1, autoTweet.getScreenName());
+			table.setText(row, 2, autoTweet.getTweet());
+			table.setText(row, 3, autoTweet.getTweetHour() + "時");
+			table.setText(row, 4, autoTweet.getCycle().name());
+			table.setText(row, 5, autoTweet.getBure().name());
+			table.setText(row, 6, autoTweet.getStartMMdd() + " ～ " + autoTweet.getEndMMdd());
+			table.setText(row, 7, autoTweet.getLastTweetAt());
 			Anchor syusei = new Anchor("修正");
 			syusei.addClickHandler(new ClickHandler() {
 
@@ -90,7 +92,7 @@ public class ListView extends Composite implements ListDisplay {
 				}
 			});
 
-			table.setWidget(row, 7, syusei);
+			table.setWidget(row, 8, syusei);
 			Anchor sakujo = new Anchor("削除");
 
 			sakujo.addClickHandler(new ClickHandler() {
@@ -101,7 +103,7 @@ public class ListView extends Composite implements ListDisplay {
 				}
 			});
 
-			table.setWidget(row, 8, sakujo);
+			table.setWidget(row, 9, sakujo);
 			row++;
 		}
 	}
