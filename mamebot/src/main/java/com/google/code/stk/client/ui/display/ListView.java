@@ -51,7 +51,7 @@ public class ListView extends Composite implements ListDisplay {
 
 	@Override
 	public void drowTable(List<AutoTweet> tweetList) {
-		table.clear();
+		table.removeAllRows();
 		if (tweetList == null || tweetList.isEmpty()) {
 			table.setText(0, 0, "tweetなし");
 			return;

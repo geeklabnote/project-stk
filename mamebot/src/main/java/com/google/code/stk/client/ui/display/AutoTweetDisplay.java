@@ -5,8 +5,9 @@ import java.util.List;
 import com.google.appengine.api.datastore.Key;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HasValue;
+import com.google.gwt.user.client.ui.IsWidget;
 
-public interface AutoTweetDisplay extends Display {
+public interface AutoTweetDisplay extends IsWidget {
 	HasValue<String> getKeyId();
 
 	HasValue<String> getTweet();

@@ -3,28 +3,35 @@ package com.google.code.stk.client.ui.presenter;
 import java.util.List;
 
 import com.google.appengine.api.datastore.Key;
-import com.google.code.stk.client.event.NewTweetCreatedEvent;
+import com.google.code.stk.client.ClientFactory;
 import com.google.code.stk.client.service.TwitterServiceAsync;
 import com.google.code.stk.client.ui.display.AutoTweetDisplay;
-import com.google.code.stk.client.ui.display.AutoTweetDisplay.Presenter;
+import com.google.code.stk.client.ui.place.EditPlace;
+import com.google.code.stk.client.ui.place.ListPlace;
 import com.google.code.stk.shared.Enums.Bure;
 import com.google.code.stk.shared.Enums.Cycle;
 import com.google.code.stk.shared.model.AutoTweet;
-import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.activity.shared.AbstractActivity;
+import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
-public class EditPresenter extends AbstractPresenter<AutoTweetDisplay> implements Presenter {
+public class EditPresenter extends AbstractActivity implements AutoTweetDisplay.Presenter {
 
 	private final TwitterServiceAsync service;
 	private final long id;
 	private AutoTweet data;
+	private final EditPlace place;
+	private final ClientFactory clientFactory;
+	private AutoTweetDisplay display;
 
 
-	public EditPresenter(AutoTweetDisplay display, HandlerManager eventBus , TwitterServiceAsync service , long id) {
-		super(display, eventBus);
-		this.service = service;
-		this.id = id;
-		display.setPresenter(this);
+	public EditPresenter(EditPlace place ,ClientFactory clientFactory) {
+		super();
+		this.place = place;
+		this.clientFactory = clientFactory;
+		this.service = this.clientFactory.getTwitterService();
+		this.id = this.place.getId();
 	}
 
 	@Override
@@ -42,7 +49,7 @@ public class EditPresenter extends AbstractPresenter<AutoTweetDisplay> implement
 			@Override
 			public void onSuccess(Void arg0) {
 				display.getRegistButton().setEnabled(true);
-				eventBus.fireEvent(new NewTweetCreatedEvent());
+				clientFactory.getPlaceController().goTo(new ListPlace());
 			}
 
 			@Override
@@ -53,7 +60,12 @@ public class EditPresenter extends AbstractPresenter<AutoTweetDisplay> implement
 	}
 
 	@Override
-	protected void initView() {
+	public void start(final AcceptsOneWidget panel, EventBus eventBus) {
+
+		display = clientFactory.getAutoTweetDisplay();
+
+		display.setPresenter(this);
+
 		service.findAllAccessToeknOnlyKey(new AsyncCallback<List<Key>>() {
 
 			@Override
@@ -71,7 +83,6 @@ public class EditPresenter extends AbstractPresenter<AutoTweetDisplay> implement
 			@Override
 			public void onSuccess(AutoTweet result) {
 				data = result;
-				container.clear();
 				display.getBure().setValue(result.getBure().name());
 				display.getCycle().setValue(result.getCycle().name());
 				display.getKeyId().setValue(String.valueOf(result.getKey().getId()));
@@ -81,7 +92,7 @@ public class EditPresenter extends AbstractPresenter<AutoTweetDisplay> implement
 				display.getTweetHour().setValue(result.getTweetHour());
 				display.getScreenName().setValue(result.getScreenName());
 
-				container.add(display.asWidget());
+				panel.setWidget(display);
 			}
 
 			@Override
@@ -89,6 +100,7 @@ public class EditPresenter extends AbstractPresenter<AutoTweetDisplay> implement
 
 			}
 		});
+
 	}
 
 }

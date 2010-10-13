@@ -6,8 +6,9 @@ import com.google.appengine.api.datastore.Key;
 import com.google.code.stk.shared.model.AutoTweet;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.IsWidget;
 
-public interface ListDisplay extends Display{
+public interface ListDisplay extends IsWidget{
 
 	void drowTable(List<AutoTweet> tweetList);
 
