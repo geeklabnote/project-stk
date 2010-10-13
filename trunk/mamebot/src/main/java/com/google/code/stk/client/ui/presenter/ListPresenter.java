@@ -3,47 +3,37 @@ package com.google.code.stk.client.ui.presenter;
 import java.util.List;
 
 import com.google.appengine.api.datastore.Key;
-import com.google.code.stk.client.event.DeleteTweetClickEvent;
-import com.google.code.stk.client.event.EditTweetClickEvent;
-import com.google.code.stk.client.event.NewTweetClickEvent;
+import com.google.code.stk.client.ClientFactory;
 import com.google.code.stk.client.service.TwitterServiceAsync;
 import com.google.code.stk.client.ui.display.ListDisplay;
+import com.google.code.stk.client.ui.place.EditPlace;
+import com.google.code.stk.client.ui.place.ListPlace;
+import com.google.code.stk.client.ui.place.NewPlace;
 import com.google.code.stk.shared.model.AutoTweet;
-import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.activity.shared.AbstractActivity;
+import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
-public class ListPresenter extends AbstractPresenter<ListDisplay> implements ListDisplay.Presenter{
+public class ListPresenter extends AbstractActivity implements ListDisplay.Presenter{
 
 	private final TwitterServiceAsync service;
+	private final ClientFactory clientFactory;
+	private final ListPlace place;
+	private ListDisplay display;
 
-	public ListPresenter(ListDisplay display, HandlerManager eventBus , TwitterServiceAsync service) {
-		super(display, eventBus);
-		this.service = service;
-		display.setPresenter(this);
+	public ListPresenter(ListPlace place , ClientFactory clientFactory) {
+		super();
+		this.place = place;
+		this.clientFactory = clientFactory;
+		this.service = this.clientFactory.getTwitterService();
 	}
 
-	@Override
-	protected void initView() {
-		container.clear();
-		container.add(display.asWidget());
-		service.findAll(new AsyncCallback<List<AutoTweet>>() {
-
-			@Override
-			public void onSuccess(List<AutoTweet> arg0) {
-				display.drowTable(arg0);
-			}
-
-			@Override
-			public void onFailure(Throwable arg0) {
-				Window.alert(arg0.getMessage());
-			}
-		});
-	}
 
 	@Override
 	public void clickNewButton() {
-		eventBus.fireEvent(new NewTweetClickEvent());
+		clientFactory.getPlaceController().goTo(new NewPlace());
 	}
 
 	@Override
@@ -53,7 +43,7 @@ public class ListPresenter extends AbstractPresenter<ListDisplay> implements Lis
 			@Override
 			public void onSuccess(Void arg0) {
 
-				eventBus.fireEvent(new DeleteTweetClickEvent(key.getId()));
+				clientFactory.getPlaceController().goTo(new ListPlace("delete" , key.getId()));
 			}
 
 			@Override
@@ -65,7 +55,7 @@ public class ListPresenter extends AbstractPresenter<ListDisplay> implements Lis
 
 	@Override
 	public void clickEditAnchor(Key key) {
-		eventBus.fireEvent(new EditTweetClickEvent(key.getId()));
+		clientFactory.getPlaceController().goTo(new EditPlace(key.getId()));
 	}
 
 	@Override
@@ -84,6 +74,26 @@ public class ListPresenter extends AbstractPresenter<ListDisplay> implements Lis
 				Window.alert("ピンコードを保存しました。");
 			}
 		});
+	}
+
+	@Override
+	public void start(final AcceptsOneWidget panel, EventBus eventBus) {
+		display = clientFactory.getListDisplay();
+		display.setPresenter(this);
+		panel.setWidget(display);
+		service.findAll(new AsyncCallback<List<AutoTweet>>() {
+
+			@Override
+			public void onSuccess(List<AutoTweet> arg0) {
+				display.drowTable(arg0);
+			}
+
+			@Override
+			public void onFailure(Throwable arg0) {
+				Window.alert(arg0.getMessage());
+			}
+		});
+
 	}
 
 }
