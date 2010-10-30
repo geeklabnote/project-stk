@@ -1,5 +1,8 @@
 package com.google.code.stk.client;
 
+import java.util.List;
+
+import com.google.appengine.api.datastore.Key;
 import com.google.code.stk.client.service.TwitterServiceAsync;
 import com.google.code.stk.client.ui.display.AutoTweetDisplay;
 import com.google.code.stk.client.ui.display.ListDisplay;
@@ -10,7 +13,7 @@ public interface ClientFactory {
 
 	ListDisplay getListDisplay();
 
-	AutoTweetDisplay getAutoTweetDisplay();
+	AutoTweetDisplay getAutoTweetDisplay(List<Key> screenNames);
 
 	EventBus getEventBus();
 

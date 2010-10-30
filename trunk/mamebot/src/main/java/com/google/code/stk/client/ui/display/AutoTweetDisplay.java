@@ -1,20 +1,17 @@
 package com.google.code.stk.client.ui.display;
 
-import java.util.List;
-
 import com.google.appengine.api.datastore.Key;
+import com.google.code.stk.shared.Enums;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.IsWidget;
 
 public interface AutoTweetDisplay extends IsWidget {
-	HasValue<String> getKeyId();
-
 	HasValue<String> getTweet();
 
-	HasValue<String> getBure();
+	HasValue<Enums.Bure> getBure();
 
-	HasValue<String> getCycle();
+	HasValue<Enums.Cycle> getCycle();
 
 	HasValue<String> getEndMMdd();
 
@@ -30,7 +27,5 @@ public interface AutoTweetDisplay extends IsWidget {
 
 	Button getRegistButton();
 
-	void setScreenNames(List<Key> arg0);
-
-	HasValue<String> getScreenName();
+	HasValue<Key> getScreenName();
 }

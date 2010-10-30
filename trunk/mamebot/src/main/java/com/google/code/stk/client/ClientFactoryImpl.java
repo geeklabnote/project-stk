@@ -1,5 +1,8 @@
 package com.google.code.stk.client;
 
+import java.util.List;
+
+import com.google.appengine.api.datastore.Key;
 import com.google.code.stk.client.service.TwitterService;
 import com.google.code.stk.client.service.TwitterServiceAsync;
 import com.google.code.stk.client.ui.display.AutoTweetDisplay;
@@ -22,9 +25,9 @@ public class ClientFactoryImpl implements ClientFactory {
 	private TwitterServiceAsync twitterService;
 
 	@Override
-	public AutoTweetDisplay getAutoTweetDisplay() {
+	public AutoTweetDisplay getAutoTweetDisplay(List<Key> screenNames) {
 
-		return new AutoTweetView();
+		return new AutoTweetView(screenNames);
 	}
 
 	@Override
