@@ -8,7 +8,7 @@
 	<properties>
 		<slim3.version>1.0.5</slim3.version>
 		<appengine.version>1.3.7</appengine.version>
-		<gwt.version>2.0.4</gwt.version>
+		<gwt.version>2.1.0-RC1</gwt.version>
 		<generated.src>.apt_generated</generated.src>
 		<generated.war>war</generated.war>
 		<eclipse.lib>eclipse.lib</eclipse.lib>
