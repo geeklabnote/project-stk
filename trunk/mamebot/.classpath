@@ -5,13 +5,13 @@
   <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
   <classpathentry kind="output" path="war/WEB-INF/classes"/>
   <classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar" sourcepath="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/com/google/gwt/gwt-servlet/2.0.4/gwt-servlet-2.0.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/gwt/gwt-servlet/2.1.0-RC1/gwt-servlet-2.1.0-RC1.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.7/junit-4.7.jar" sourcepath="M2_REPO/junit/junit/4.7/junit-4.7-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/bufferings/ktrwjr/1.0.0/ktrwjr-1.0.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/slim3/slim3/1.0.5/slim3-1.0.5.jar" sourcepath="M2_REPO/org/slim3/slim3/1.0.5/slim3-1.0.5-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/twitter4j/twitter4j-core/2.1.5-SNAPSHOT/twitter4j-core-2.1.5-SNAPSHOT.jar" sourcepath="M2_REPO/org/twitter4j/twitter4j-core/2.1.5-SNAPSHOT/twitter4j-core-2.1.5-SNAPSHOT-sources.jar">
+  <classpathentry kind="var" path="M2_REPO/org/twitter4j/twitter4j-core/2.1.7-SNAPSHOT/twitter4j-core-2.1.7-SNAPSHOT.jar" sourcepath="M2_REPO/org/twitter4j/twitter4j-core/2.1.7-SNAPSHOT/twitter4j-core-2.1.7-SNAPSHOT-sources.jar">
     <attributes>
-      <attribute value="jar:file:/D:/usr/local/m2/repository/org/twitter4j/twitter4j-core/2.1.5-SNAPSHOT/twitter4j-core-2.1.5-SNAPSHOT-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="jar:file:/D:/usr/local/m2/repository/org/twitter4j/twitter4j-core/2.1.7-SNAPSHOT/twitter4j-core-2.1.7-SNAPSHOT-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>

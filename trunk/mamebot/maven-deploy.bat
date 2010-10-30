@@ -1,2 +1,2 @@
 cd %0\..
-cmd /k mvn deploy:deploy-file -DgroupId=bufferings -DartifactId=ktrwjr -Dversion=1.0.0 -Dpackaging=jar -Dfile=./repo/ktrwjr.jar -Durl=file:repo
+cmd /k mvn deploy:deploy-file -DgroupId=com.google.gwt -DartifactId=gwt-servlet -Dversion=2.1.0 -Dpackaging=jar -Dfile=./repo/gwt-servlet.jar -Durl=file:repo
