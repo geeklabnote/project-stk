@@ -1,0 +1,29 @@
+<archetype>
+  <id>slim3-gwt-archetype-quickstart</id>
+  <sources>
+     <source>src/main/java/client/Index.java</source>
+     <source>src/main/java/client/service/GwtSlim3Service.java</source>
+     <source>src/main/java/client/service/GwtSlim3ServiceAsync.java</source>
+     <source>src/main/java/shared/model/Slim3Model.java</source>
+     <source>src/main/java/server/service/Slim3Service.java</source>
+     <source>src/main/java/server/service/GwtSlim3ServiceImpl.java</source>
+     <source>src/main/java/server/controller/IndexController.java</source>
+  </sources>
+  <resources>
+    <resource>build.properties</resource>
+    <resource>build.xml</resource>
+    <resource>src/main/resources/Index.gwt.xml</resource>
+    <resource>src/main/resources/logging.properties</resource>
+    <resource>war/WEB-INF/appengine-web.xml</resource>
+    <resource>war/WEB-INF/web.xml</resource>
+    <resource>war/WEB-INF/queue.xml</resource>
+    <resource>war/index.html</resource>
+  </resources>
+  <testSources>
+    <source>src/test/java/server/service/GwtSlim3ServiceImplTest.java</source>
+    <source>src/test/java/server/service/Slim3ServiceTest.java</source>
+    <source>src/test/java/server/controller/IndexControllerTest.java</source>
+  </testSources>
+  <testResources>
+  </testResources>
+</archetype>
