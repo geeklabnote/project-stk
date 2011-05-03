@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-catalog  xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-catalog/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-catalog/1.0.0 http://maven.apache.org/xsd/archetype-catalog-1.0.0.xsd">
+  <archetypes>
+    <archetype>
+      <groupId>com.googlecode.stk</groupId>
+      <artifactId>slim3-gwt-archetype-quickstart</artifactId>
+      <version>1.0.10</version>
+      <repository>http://project-stk.googlecode.com/svn/trunk/repository/</repository>
+      <description>Archetype - slim3-gwt-archetype-quickstart(slim3-1.0.10,appengine-1.4.3,gwt-2.2.0)</description>
+    </archetype>
+  </archetypes>
+</archetype-catalog>
