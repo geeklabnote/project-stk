@@ -22,3 +22,7 @@ mvn eclipse:eclipse
 }}}
   # mavenが起動し、eclipse用のプロジェクト設定がされます。
   # 成功したら、eclipseから対象プロジェクトをインポートしてください。
+
+= 注意 =
+この設定で利用されるappengine、gwtはeclipseの設定と、pom.xmlに記述されている者が同じでなければなりません。
+appengine、gwtは初期時にはeclipseでデフォルトで設定されているクラスパスコンテナを利用しますので、お気を付け下さい。
