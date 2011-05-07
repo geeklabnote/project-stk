@@ -1,0 +1,2 @@
+serviceClass: foo.bar.client.service.GwtSlim3Service
+path: 2FBCDD4E55D6E3EDC79753CBCECFF2F4.gwt.rpc

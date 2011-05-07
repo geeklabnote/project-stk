@@ -1,0 +1,3 @@
+# Module foo.bar.Index
+# RPC service class, partial path of RPC policy file
+foo.bar.client.service.GwtSlim3Service, 2FBCDD4E55D6E3EDC79753CBCECFF2F4.gwt.rpc
