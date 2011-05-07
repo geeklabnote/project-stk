@@ -1,22 +1,17 @@
 package com.google.code.stk.server.controller.sys.cron;
 
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertThat;
 
+import org.junit.Test;
 import org.slim3.datastore.Datastore;
 import org.slim3.tester.ControllerTestCase;
-import org.slim3.util.DateUtil;
-import org.slim3.util.LocaleLocator;
-import org.slim3.util.TimeZoneLocator;
-import org.junit.Test;
 
 import com.google.code.stk.shared.Enums.Bure;
 import com.google.code.stk.shared.Enums.Cycle;
 import com.google.code.stk.shared.model.AutoTweet;
-
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 
 public class ScheduleControllerTest extends ControllerTestCase {
 
@@ -28,9 +23,6 @@ public class ScheduleControllerTest extends ControllerTestCase {
 		assertThat(controller, is(notNullValue()));
 		assertThat(tester.isRedirect(), is(false));
 		assertThat(tester.getDestinationPath(), is(nullValue()));
-
-
-
 	}
 
 	public static void registAutoTweet() {
