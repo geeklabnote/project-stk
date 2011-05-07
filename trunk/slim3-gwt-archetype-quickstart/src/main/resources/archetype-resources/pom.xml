@@ -84,20 +84,12 @@
       <version>${dollar}${lcurly}gwt.version}</version>
       <scope>runtime</scope>
     </dependency>
-    <!-- if you want to use other IDE need,prease this uncomment
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
       <version>${dollar}${lcurly}gwt.version}</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-dev</artifactId>
-      <version>${gwt.version}</version>
-      <scope>provided</scope>
-    </dependency>
-     -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
@@ -132,7 +124,7 @@
     -->
   </dependencies>
   <build>
-    <finalName>slim3-maven</finalName>
+    <finalName>${artifactId}</finalName>
     <outputDirectory>${dollar}${lcurly}generated.war}/WEB-INF/classes</outputDirectory>
     <pluginManagement>
       <plugins>
@@ -233,6 +225,52 @@
               <overWriteSnapshots>true</overWriteSnapshots>
               <overWriteIfNewer>true</overWriteIfNewer>
             </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <version>2.2.0</version>
+        <dependencies>
+          <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <version>${dollar}${lcurly}gwt.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${dollar}${lcurly}gwt.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-servlet</artifactId>
+            <version>${dollar}${lcurly}gwt.version}</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <logLevel>INFO</logLevel>
+          <style>PRETTY</style>
+          <server>com.google.appengine.tools.development.gwt.AppEngineLauncher</server>
+            <!--
+            comment as it failed when running the application
+            <extraJvmArgs>-javaagent:${gae.home}/appengine-java-sdk-${gae.version}/lib/agent/appengine-agent.jar
+            -Xmx1024m </extraJvmArgs>
+            -->
+          <appEngineVersion>${dollar}${lcurly}appengine.version}</appEngineVersion>
+          <copyWebapp>true</copyWebapp>
+          <runClasspathExcludes>
+            <runClasspathExclude>asm-3.3.jar</runClasspathExclude>
+          </runClasspathExcludes>
+        </configuration>
+        <executions>
+          <execution>
+            <id>gwtcompile</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>
