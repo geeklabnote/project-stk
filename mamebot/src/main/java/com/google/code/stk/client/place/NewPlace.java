@@ -1,4 +1,4 @@
-package com.google.code.stk.client.ui.place;
+package com.google.code.stk.client.place;
 
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;

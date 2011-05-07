@@ -1,6 +1,6 @@
 package com.google.code.stk.client;
 
-import com.google.code.stk.client.ui.place.ListPlace;
+import com.google.code.stk.client.place.ListPlace;
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.core.client.EntryPoint;

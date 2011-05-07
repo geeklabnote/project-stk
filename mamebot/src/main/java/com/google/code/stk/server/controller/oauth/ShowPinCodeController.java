@@ -4,7 +4,7 @@ import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 
 import twitter4j.Twitter;
-import twitter4j.http.RequestToken;
+import twitter4j.auth.RequestToken;
 
 import com.google.code.stk.server.service.TwitterUtil;
 

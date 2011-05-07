@@ -3,25 +3,26 @@ package com.google.code.stk.server.service;
 import org.slim3.memcache.Memcache;
 import org.slim3.util.ServletContextLocator;
 
+import twitter4j.Twitter;
+import twitter4j.TwitterFactory;
+import twitter4j.auth.RequestToken;
+
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.code.stk.server.model.TwAccessToken;
-
-import twitter4j.Twitter;
-import twitter4j.TwitterFactory;
-import twitter4j.http.RequestToken;
 
 public class TwitterUtil {
 
 	public static Twitter getNonAuthTwitter(){
 		String consumerKey = getConsumerKey();
 		String secret = getSecret();
-
-		return new TwitterFactory().getOAuthAuthorizedInstance(consumerKey, secret);
+		Twitter twitter = new TwitterFactory().getInstance();
+		twitter.setOAuthConsumer(consumerKey, secret);
+		return twitter;
 	}
 
 	public static Twitter getOAuthTwitter(TwAccessToken token){
-		return new TwitterFactory().getOAuthAuthorizedInstance(getConsumerKey(), getSecret(), token.getAccessToken());
+		return new TwitterFactory().getInstance(token.getAccessToken());
 	}
 
 	private static String getSecret() {

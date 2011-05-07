@@ -1,11 +1,11 @@
 package com.google.code.stk.client;
 
-import com.google.code.stk.client.ui.place.EditPlace;
-import com.google.code.stk.client.ui.place.ListPlace;
-import com.google.code.stk.client.ui.place.NewPlace;
-import com.google.code.stk.client.ui.presenter.EditPresenter;
-import com.google.code.stk.client.ui.presenter.ListPresenter;
-import com.google.code.stk.client.ui.presenter.NewPresenter;
+import com.google.code.stk.client.place.EditPlace;
+import com.google.code.stk.client.place.ListPlace;
+import com.google.code.stk.client.place.NewPlace;
+import com.google.code.stk.client.presenter.EditPresenter;
+import com.google.code.stk.client.presenter.ListPresenter;
+import com.google.code.stk.client.presenter.NewPresenter;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
