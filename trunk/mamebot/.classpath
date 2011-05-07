@@ -10,6 +10,11 @@
       <attribute value="jar:file:/C:/Users/ohashi%20keisuke/.m2/repository/com/google/gwt/gwt-servlet/2.2.0/gwt-servlet-2.2.0-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/com/google/gwt/gwt-user/2.2.0/gwt-user-2.2.0.jar" sourcepath="M2_REPO/com/google/gwt/gwt-user/2.2.0/gwt-user-2.2.0-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/ohashi%20keisuke/.m2/repository/com/google/gwt/gwt-user/2.2.0/gwt-user-2.2.0-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.7/junit-4.7.jar" sourcepath="M2_REPO/junit/junit/4.7/junit-4.7-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/bufferings/ktrwjr/1.0.0/ktrwjr-1.0.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/slim3/slim3/1.0.10/slim3-1.0.10.jar" sourcepath="M2_REPO/org/slim3/slim3/1.0.10/slim3-1.0.10-sources.jar"/>
