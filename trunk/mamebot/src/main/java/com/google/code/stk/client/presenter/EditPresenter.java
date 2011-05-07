@@ -1,53 +1,55 @@
-package com.google.code.stk.client.ui.presenter;
+package com.google.code.stk.client.presenter;
 
 import java.util.List;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.code.stk.client.ClientFactory;
+import com.google.code.stk.client.place.EditPlace;
+import com.google.code.stk.client.place.ListPlace;
 import com.google.code.stk.client.service.TwitterServiceAsync;
 import com.google.code.stk.client.ui.display.AutoTweetDisplay;
 import com.google.code.stk.client.ui.display.AutoTweetView;
-import com.google.code.stk.client.ui.place.ListPlace;
-import com.google.code.stk.client.ui.place.NewPlace;
 import com.google.code.stk.shared.model.AutoTweet;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
-public class NewPresenter extends AbstractActivity implements AutoTweetDisplay.Presenter {
+public class EditPresenter extends AbstractActivity implements AutoTweetDisplay.Presenter {
 
 	private final TwitterServiceAsync service;
-	private final NewPlace place;
+	private final long id;
+	private AutoTweet data;
+	private final EditPlace place;
 	private final ClientFactory clientFactory;
 	private AutoTweetDisplay display;
-	private EditPresenter.AutoTweetDriver driver = GWT.create(EditPresenter.AutoTweetDriver.class);
+	interface AutoTweetDriver extends SimpleBeanEditorDriver<AutoTweet, AutoTweetView> {}
+	private AutoTweetDriver driver = GWT.create(AutoTweetDriver.class);
 
-	public NewPresenter(NewPlace place , ClientFactory clientFactory) {
+	public EditPresenter(EditPlace place ,ClientFactory clientFactory) {
 		super();
 		this.place = place;
 		this.clientFactory = clientFactory;
 		this.service = this.clientFactory.getTwitterService();
+		this.id = this.place.getId();
 	}
 
 	@Override
 	public void regist() {
-		display.getRegistButton().setEnabled(false);
-
-		AutoTweet data = driver.flush();
+		data = driver.flush();
 
 		if(driver.hasErrors()){
-
 			return;
 		}
-
 		service.regist(data, new AsyncCallback<Void>() {
 
 			@Override
 			public void onSuccess(Void arg0) {
 				display.getRegistButton().setEnabled(true);
-				clientFactory.getPlaceController().goTo(new ListPlace("new"));
+				clientFactory.getPlaceController().goTo(new ListPlace("edit" ,data.getKey().getId()));
 			}
 
 			@Override
@@ -57,9 +59,9 @@ public class NewPresenter extends AbstractActivity implements AutoTweetDisplay.P
 		});
 	}
 
-
 	@Override
 	public void start(final AcceptsOneWidget panel, EventBus eventBus) {
+
 
 		service.findAllAccessToeknOnlyKey(new AsyncCallback<List<Key>>() {
 
@@ -71,13 +73,36 @@ public class NewPresenter extends AbstractActivity implements AutoTweetDisplay.P
 			@Override
 			public void onSuccess(List<Key> arg0) {
 				display = clientFactory.getAutoTweetDisplay(arg0);
-				driver.initialize((AutoTweetView)display);
-				driver.edit(new AutoTweet());
-				display.setPresenter(NewPresenter.this);
-				panel.setWidget(display);
+				display.setPresenter(EditPresenter.this);
+			}
+		});
+		service.findBy(id, new AsyncCallback<AutoTweet>() {
+
+			@Override
+			public void onSuccess(AutoTweet result) {
+				data = result;
+			}
+
+			@Override
+			public void onFailure(Throwable throwable) {
+
 			}
 		});
 
+		Timer timer = new Timer() {
+
+			@Override
+			public void run() {
+				if(data != null && display != null){
+					driver.initialize((AutoTweetView)display);
+					driver.edit(data);
+					panel.setWidget(display);
+					cancel();
+				}
+			}
+		};
+
+		timer.scheduleRepeating(100);
 	}
 
 }

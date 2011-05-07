@@ -16,11 +16,11 @@ import org.slim3.util.LocaleLocator;
 import org.slim3.util.StringUtil;
 import org.slim3.util.TimeZoneLocator;
 
-import com.google.appengine.api.labs.taskqueue.Queue;
-import com.google.appengine.api.labs.taskqueue.QueueFactory;
-import com.google.appengine.api.labs.taskqueue.TaskOptions;
-import com.google.appengine.api.labs.taskqueue.TaskOptions.Builder;
-import com.google.appengine.api.labs.taskqueue.TaskOptions.Method;
+import com.google.appengine.api.taskqueue.Queue;
+import com.google.appengine.api.taskqueue.QueueFactory;
+import com.google.appengine.api.taskqueue.TaskOptions;
+import com.google.appengine.api.taskqueue.TaskOptions.Builder;
+import com.google.appengine.api.taskqueue.TaskOptions.Method;
 import com.google.code.stk.server.meta.AutoTweetMeta;
 import com.google.code.stk.shared.Enums.Bure;
 import com.google.code.stk.shared.Enums.Cycle;
@@ -107,7 +107,7 @@ public class ScheduleController extends Controller {
 
 	private void registTaskQueue(AutoTweet autoTweet) {
 		Queue queue = QueueFactory.getQueue("autoTweet");
-		TaskOptions op = Builder.method(Method.POST)
+		TaskOptions op = Builder.withMethod(Method.POST)
 								.url("/sys/task/twitter/autoTweet")
 								.param("id",String.valueOf(autoTweet.getKey().getId()));
 		if(autoTweet.getBure() == Bure.RANDOM){

@@ -1,14 +1,14 @@
-package com.google.code.stk.client.ui.presenter;
+package com.google.code.stk.client.presenter;
 
 import java.util.List;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.code.stk.client.ClientFactory;
+import com.google.code.stk.client.place.EditPlace;
+import com.google.code.stk.client.place.ListPlace;
+import com.google.code.stk.client.place.NewPlace;
 import com.google.code.stk.client.service.TwitterServiceAsync;
 import com.google.code.stk.client.ui.display.ListDisplay;
-import com.google.code.stk.client.ui.place.EditPlace;
-import com.google.code.stk.client.ui.place.ListPlace;
-import com.google.code.stk.client.ui.place.NewPlace;
 import com.google.code.stk.shared.model.AutoTweet;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
