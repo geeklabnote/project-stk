@@ -71,6 +71,12 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<version>${gwt.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>bufferings</groupId>
 			<artifactId>ktrwjr</artifactId>
 			<version>1.0.0</version>
@@ -256,16 +262,60 @@
 								<include>**/*.*</include>
 							</includes>
 						</fileset>
-<!-- 						<fileset>
-							<directory>${eclipse.lib}</directory>
-							<excludes>
-								<exclude>slim3-gen-*.jar</exclude>
-							</excludes>
-						</fileset>
- -->
+						<!--
+							<fileset> <directory>${eclipse.lib}</directory> <excludes>
+							<exclude>slim3-gen-*.jar</exclude> </excludes> </fileset>
+						-->
 
 					</filesets>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<version>2.2.0</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-user</artifactId>
+						<version>${gwt.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-dev</artifactId>
+						<version>${gwt.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-servlet</artifactId>
+						<version>${gwt.version}</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<logLevel>INFO</logLevel>
+					<style>PRETTY</style>
+					<server>com.google.appengine.tools.development.gwt.AppEngineLauncher</server>
+					<!--
+						comment as it failed when running the application
+						<extraJvmArgs>-javaagent:${gae.home}/appengine-java-sdk-${gae.version}/lib/agent/appengine-agent.jar
+						-Xmx1024m </extraJvmArgs>
+					-->
+
+					<appEngineVersion>${appengine.version}</appEngineVersion>
+					<copyWebapp>true</copyWebapp>
+					<runClasspathExcludes>
+						<runClasspathExclude>asm-3.3.jar</runClasspathExclude>
+					</runClasspathExcludes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>gwtcompile</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -279,9 +329,9 @@
 						<exclude>com.google.appengine:appengine-local-runtime</exclude>
 					</excludes>
 					<additionalProjectnatures>
+						<projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
 						<projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature>
 						<projectnature>com.google.gdt.eclipse.core.webAppNature</projectnature>
-						<projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
 					</additionalProjectnatures>
 					<additionalBuildcommands>
 						<buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand>
