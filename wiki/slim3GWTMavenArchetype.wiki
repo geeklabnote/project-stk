@@ -9,7 +9,7 @@ mavenをインストール済みの前提です。 & 現在のarchetypeはeclips
 mvn archetype:generate -DarchetypeCatalog=http://project-stk.googlecode.com/svn/trunk/repository
 }}}
 
-  # どのプロジェクトを作成するかを求められるので、slm3-gwt-archetype-quickstart を意味する "1" を入力します。注意）現在は選択肢が1以外ありません。
+  # どのプロジェクトを作成するかを求められるので、説明を読み任意の番号を入力してください。
   # groupId, artifactId, version, package等々の入力を求められるので任意で入力します。
   # 最後に、入力した値の確認を求められるので、問題なければ "Y" を入力します。
   # maven用のslim3、gwtプロジェクトが作成されます。
