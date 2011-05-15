@@ -5,16 +5,16 @@
     <archetype>
       <groupId>com.googlecode.stk</groupId>
       <artifactId>slim3-gwt-archetype-quickstart</artifactId>
-      <version>1.0.10</version>
+      <version>1.0.11</version>
       <repository>http://project-stk.googlecode.com/svn/trunk/repository/</repository>
-      <description>Archetype - slim3-gwt-archetype-quickstart(slim3-1.0.10,appengine-1.4.3,gwt-2.2.0)</description>
+      <description>Archetype - slim3-gwt-archetype-quickstart(slim3-1.0.11,appengine-1.5.0,gwt-2.3.0)</description>
     </archetype>
     <archetype>
       <groupId>com.googlecode.stk</groupId>
       <artifactId>slim3-gwt-archetype-quickstart</artifactId>
-      <version>1.0.11</version>
+      <version>1.0.10</version>
       <repository>http://project-stk.googlecode.com/svn/trunk/repository/</repository>
-      <description>Archetype - slim3-gwt-archetype-quickstart(slim3-1.0.11,appengine-1.5.0,gwt-2.3.0)</description>
+      <description>Archetype - slim3-gwt-archetype-quickstart(slim3-1.0.10,appengine-1.4.3,gwt-2.2.0)</description>
     </archetype>
   </archetypes>
 </archetype-catalog>
