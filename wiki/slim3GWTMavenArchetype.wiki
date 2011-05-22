@@ -13,9 +13,6 @@ mvn archetype:generate -DarchetypeCatalog=http://project-stk.googlecode.com/svn/
   # groupId, artifactId, version, package等々の入力を求められるので任意で入力します。
   # 最後に、入力した値の確認を求められるので、問題なければ "Y" を入力します。
   # maven用のslim3、gwtプロジェクトが作成されます。
-{{{
-ただしgwt用のpluginをいれていないため、このままでは利用できません。
-}}}
   # 作成されたフォルダに移動し、以下のコマンドを入力します。
 {{{
 mvn eclipse:eclipse
