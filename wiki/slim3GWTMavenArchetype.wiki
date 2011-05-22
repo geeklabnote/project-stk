@@ -26,3 +26,19 @@ mvn eclipse:eclipse
 = 注意 =
 この設定で利用されるappengine、gwtはeclipseの設定と、pom.xmlに記述されている者が同じでなければなりません。
 appengine、gwtは初期時にはeclipseでデフォルトで設定されているクラスパスコンテナを利用しますので、お気を付け下さい。
+
+svnでブランチを作成した場合など、artifactIdとプロジェクトのフォルダ名が異なると、
+Eclipse利用時にエラーが発生します。
+
+エラーが発生する場合はpom.xml内の
+{{{
+  <factorypathentry kind="WKSPJAR" id="/${artifactId}/${eclipse.lib}/slim3-gen-${slim3.version}.jar" enabled="true" runInBatchMode="false"/>
+
+}}}
+の部分の${artifactId}をプロジェクト名に変更してください。
+
+例:
+{{{
+  <factorypathentry kind="WKSPJAR" id="/foo.bar-branch/${eclipse.lib}/slim3-gen-${slim3.version}.jar" enabled="true" runInBatchMode="false"/>
+
+}}}
